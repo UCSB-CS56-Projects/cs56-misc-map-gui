@@ -24,6 +24,7 @@ public class TheGUI{
      * Creates the GUI using Jframe as mainframe
      * @param string 
      */
+
     JFrame frame        =      new JFrame("UCSB Campus Map");//main frame
     JPanel thePanel     =      new JPanel();//Back homescreen panel
     JPanel newPanel     =      new JPanel();// New panel when button is clicked
