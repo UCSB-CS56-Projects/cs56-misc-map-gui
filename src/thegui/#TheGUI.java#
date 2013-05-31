@@ -230,9 +230,6 @@ public class TheGUI{
     }//end setUpHomeScreen
     
     //function to clear the main frame
-    /**
-     * Removes all components of the frame, useful before switching panels
-     */
     public void guiRemoveAll() {
     	////this wipes the frame clean, use before switching panels
 	leftPanel.removeAll();

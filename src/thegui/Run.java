@@ -10,6 +10,7 @@ import java.io.IOException;
 public class Run{
     /**
      * Main function that creates an instance of the GUI class
+     * @exception IOException is thrown
      */
     public static void main(String[] args) throws IOException {
 	TheGUI a = new TheGUI();
