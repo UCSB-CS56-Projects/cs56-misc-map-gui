@@ -14,12 +14,16 @@ import javax.swing.*;
 import java.awt.Dimension;
 
 /**
- *
+ * TheGUI class creates the interface using swing for the map. 
  * @author Aki Stankoski and Dennis Huynh
  */
 
 public class TheGUI{
     //declare the panels and buttons to be accessed from multiple methods  
+    /** 
+     * Creates the GUI using Jframe as mainframe
+     * @param string 
+     */
     JFrame frame        =      new JFrame("UCSB Campus Map");//main frame
     JPanel thePanel     =      new JPanel();//Back homescreen panel
     JPanel newPanel     =      new JPanel();// New panel when button is clicked
