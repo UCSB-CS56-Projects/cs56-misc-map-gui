@@ -9,16 +9,15 @@
    <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}" />
 
   <property name="course" value="cs56" />
-  <property name="quarter" value="W12" />
+  <property name="quarter" value="S13" />
   <property name="issueNum" value="0000707" />
-  <property name="mainClass" value="thegui.Run" />
-
-  <property name="projectName" value="${course}_${quarter}_${issueNum}" />
-  <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}" />
+  <property name="mainClass" value="Run" />
+  <property name="packageName" value="edu.ucsb.cs56.projects.misc.map_gui"/>
+  <property name="projectName" value="map_gui" />
+  <property name="projectPath" value="/edu/ucsb/cs56/projects/misc/" />
+  <property name="projectRepo" value="cs56-misc-map-gui"/>
   <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc" /> 
   <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc" /> 
-  <property name="jwsDest" value="${webRoot}/${projectPath}/jws" /> 
-  <property name="jwsURL" value="${webBaseUrl}/${projectPath}/jws" /> 
 
 
   <target name="compile" >
@@ -27,14 +26,14 @@
 
      <classpath>
          <pathelement location="build"/>
-         <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+         <pathelement location="lib/junit-4.8.2.jar"/>
      </classpath>
     </javac>
 
   </target>
 
   <target name="run" depends="compile,jar">
-    <java classname="${mainClass}" classpath="dist/${projectName}.jar" fork="true" > 
+    <java classname="${packageName}.${mainClass}" classpath="dist/${projectName}.jar" fork="true" > 
     </java>
   </target>
 
@@ -52,7 +51,7 @@
 
    <junit haltonerror="no" haltonfailure="no">
        <classpath>
-         <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+         <pathelement location="lib/junit-4.8.2.jar"/>
          <pathelement location="build" />
        </classpath>
 
@@ -73,7 +72,7 @@
    <javadoc  destdir="javadoc" author="true" version="true" use="true" >  
       <fileset dir="src" includes="**/*.java"/>  
       <classpath>
-          <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+          <pathelement location="lib/junit-4.8.2.jar"/>
      </classpath>
    </javadoc>
 
@@ -178,8 +177,7 @@
    <echo>Project published to ${webBaseUrl}/${projectPath}</echo> 
  </target>
 
-
- <target name="jws" depends="compile,jar">
+<target name="jws" depends="compile,jar">
 
    <delete dir="${webRoot}/${projectPath}/jws" />
    <mkdir dir="${webRoot}/${projectPath}/jws" />
@@ -192,7 +190,6 @@
    </copy>
    <echo>Java web start at ${jwsURL}</echo>
  </target>
-
 
 <target name="linenumbers" description="Creates a file containing all source files with line numbers">               
    <exec executable="bash">                                                                                          
