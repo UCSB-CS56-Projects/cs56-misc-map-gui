@@ -40,6 +40,8 @@ public class TheGUI{
     JButton LLCH        =      new JButton("LLCH");//concert hall
     JButton PHELP       =      new JButton("PHELP");//phelps hall
     JButton cancel      =      new JButton("Cancel");//cancel button for subscreens
+    JButton ZoomIn      =      new JButton("Zoom -");
+    JButton ZoomOut     =      new JButton("Zoom +");
     JLabel T387Label    =      new JLabel("387 - Trailer 387");
     JLabel T429Label    =      new JLabel("429 - Trailer 429");
     JLabel BRDALabel    =      new JLabel("BRDA - Broida Hall");
@@ -254,6 +256,7 @@ public class TheGUI{
 	newPanel.setBackground(Color.WHITE);//creates new panel for the directions to Trailer 387
 	newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
 	newPanel.setSize(800,625);//sets the size of new panel
+
 	JTextArea T387TA = new JTextArea(T387Info);//creates a new space for text for directions
 	T387TA.setEditable(false);//makes the new text area NOT editable
 	T387TA.setLineWrap(true);//allows the lines to go to the next line if the current on is full
@@ -261,14 +264,27 @@ public class TheGUI{
 	JScrollPane T387Scroll = new JScrollPane(T387TA);//creates a new scrollable widget
 	T387Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//allows for scrolling on that widget
 	T387TA.setPreferredSize(new Dimension(200,600));//sets the size of the text area
-	infoPanel.add(T387Scroll);//adds the scrolling vertical bar onto the infopanel
+	infoPanel.add(T387Scroll);//adds the scrollin
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(cancel);//adds a cancel button on the panel located at the bottom of the frame
 	newPanel.add(bottomPanel);//adds the bottom panel onto the new panel that has the directions to Trailer 387
 	topPanel.add(T387Label);//adds the label to the top panel
 	cancel.addActionListener(new CancelActionListener());//adds a new ActionListener to the Cancel button
 	java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
 	JLabel T387label = new JLabel(new ImageIcon(T387_URL));//Creates a new label for the loaded image
-	
+
+
+
+		//added 5:02
+	ZoomIn.setPreferredSize(new Dimension(100,100));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+
+	ZoomOut.setPreferredSize(new Dimension(100,100));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomOut);
+
+
 	
 	//String Path = "387.jpg";
 	//File File = new File(Path);
