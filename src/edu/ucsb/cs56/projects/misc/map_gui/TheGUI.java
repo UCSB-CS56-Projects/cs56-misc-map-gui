@@ -18,6 +18,7 @@ import java.awt.Dimension;
  * @author Aki Stankoski and Dennis Huynh
  */
 
+//Spencer's coment
 public class TheGUI{
     //declare the panels and buttons to be accessed from multiple methods  
 
