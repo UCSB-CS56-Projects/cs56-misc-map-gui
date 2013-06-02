@@ -329,7 +329,7 @@ public class TheGUI{
 	    
 	    ImageIcon icon = new ImageIcon(T387_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1000, 1000, Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(1500, 1500, Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel T387label = new JLabel(finalIcon);//Creates a new label for the loaded image
 	    
@@ -419,6 +419,10 @@ public class TheGUI{
 	java.net.URL T429_URL = getClass().getResource("/429.jpg");
 	JLabel T429label = new JLabel(new ImageIcon(T429_URL));
 	
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInT429ActionListener());
 	//String Path = "429.jpg";
 	//File File = new File(Path);
 	//BufferedImage Image = ImageIO.read(File);
@@ -432,7 +436,91 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end T429
-    
+
+    class ZoomInT429ActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea T429TA = new JTextArea(T429Info);
+	    T429TA.setEditable(false);
+	    T429TA.setLineWrap(true);
+	    T429TA.setWrapStyleWord(true);
+	    JScrollPane T429Scroll = new JScrollPane(T429TA);
+	    T429Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    T429TA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(T429Scroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(T429Label);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL T429_URL = getClass().getResource("/429.jpg");
+	    ImageIcon icon = new ImageIcon(T429_URL);
+	    Image image = icon.getImage();
+	    Image ZoomIn = image.getScaledInstance(1500,1500, Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomIn);
+	    JLabel T429label = new JLabel(finalIcon);
+	    
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomOutT429ActionListener());
+	    //String Path = "429.jpg";
+	    //File File = new File(Path);
+	    //BufferedImage Image = ImageIO.read(File);
+	    //JLabel label = new JLabel(new ImageIcon(Image));
+	    newPanel.add(T429label);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutT429ActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea T429TA = new JTextArea(T429Info);
+	    T429TA.setEditable(false);
+	    T429TA.setLineWrap(true);
+	    T429TA.setWrapStyleWord(true);
+	    JScrollPane T429Scroll = new JScrollPane(T429TA);
+	    T429Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    T429TA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(T429Scroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(T429Label);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL T429_URL = getClass().getResource("/429.jpg");
+	    JLabel T429label = new JLabel(new ImageIcon(T429_URL));
+	    
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInT429ActionListener());
+	    //String Path = "429.jpg";
+	    //File File = new File(Path);
+	    //BufferedImage Image = ImageIO.read(File);
+	    //JLabel label = new JLabel(new ImageIcon(Image));
+	    newPanel.add(T429label);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+
+
     public void BRDA() throws IOException{//creates gui with directions for Broida
 	guiRemoveAll();
 	newPanel.setBackground(Color.WHITE);
@@ -451,7 +539,13 @@ public class TheGUI{
 	topPanel.add(BRDALabel);
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL BRDA_URL = getClass().getResource("/BRDA.jpg");
-	JLabel BRDAlabel = new JLabel(new ImageIcon(BRDA_URL));
+	ImageIcon icon = new ImageIcon(BRDA_URL);
+	JLabel BRDAlabel = new JLabel(icon);
+
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInT387ActionListener());
 	//String BRDAPath = "BRDA.jpg";
 	//File BRDAFile = new File(BRDAPath);
 	//BufferedImage BRDAImage = ImageIO.read(BRDAFile);
@@ -466,6 +560,7 @@ public class TheGUI{
 	frame.setVisible(true);
     }//end BRDA
     
+
     public void BSIF() throws IOException{//gui with directions for BSIF
 	guiRemoveAll();
 	newPanel.setBackground(Color.WHITE);
