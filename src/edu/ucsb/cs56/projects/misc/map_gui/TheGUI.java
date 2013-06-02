@@ -545,7 +545,7 @@ public class TheGUI{
 	ZoomIn.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInT387ActionListener());
+	ZoomIn.addActionListener(new ZoomInBRDAActionListener());
 	//String BRDAPath = "BRDA.jpg";
 	//File BRDAFile = new File(BRDAPath);
 	//BufferedImage BRDAImage = ImageIO.read(BRDAFile);
@@ -560,6 +560,89 @@ public class TheGUI{
 	frame.setVisible(true);
     }//end BRDA
     
+    class ZoomInBRDAActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea BRDATA = new JTextArea(BRDAInfo);
+	    BRDATA.setEditable(false);
+	    BRDATA.setLineWrap(true);
+	    BRDATA.setWrapStyleWord(true);
+	    JScrollPane BRDAScroll = new JScrollPane(BRDATA);
+	    BRDAScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    BRDATA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(BRDAScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(BRDALabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL BRDA_URL = getClass().getResource("/BRDA.jpg");
+	    ImageIcon icon = new ImageIcon(BRDA_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel BRDAlabel = new JLabel(finalIcon);
+	    
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomOutBRDAActionListener());
+	    //String BRDAPath = "BRDA.jpg";
+	    //File BRDAFile = new File(BRDAPath);
+	    //BufferedImage BRDAImage = ImageIO.read(BRDAFile);
+	    //JLabel BRDAlabel = new JLabel(new ImageIcon(BRDAImage));
+	    newPanel.add(BRDAlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutBRDAActionListner implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea BRDATA = new JTextArea(BRDAInfo);
+	    BRDATA.setEditable(false);
+	    BRDATA.setLineWrap(true);
+	    BRDATA.setWrapStyleWord(true);
+	    JScrollPane BRDAScroll = new JScrollPane(BRDATA);
+	    BRDAScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    BRDATA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(BRDAScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(BRDALabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL BRDA_URL = getClass().getResource("/BRDA.jpg");
+	    ImageIcon icon = new ImageIcon(BRDA_URL);
+	    JLabel BRDAlabel = new JLabel(icon);
+	    
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInBRDAActionListener());
+	    //String BRDAPath = "BRDA.jpg";
+	    //File BRDAFile = new File(BRDAPath);
+	    //BufferedImage BRDAImage = ImageIO.read(BRDAFile);
+	    //JLabel BRDAlabel = new JLabel(new ImageIcon(BRDAImage));
+	    newPanel.add(BRDAlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
 
     public void BSIF() throws IOException{//gui with directions for BSIF
 	guiRemoveAll();
@@ -580,6 +663,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL BSIF_URL = getClass().getResource("/BSIF.jpg");
 	JLabel BSIFlabel = new JLabel(new ImageIcon(BSIF_URL));
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInBSIFActionListener());
 	//String BSIFPath = "BSIF.jpg";
 	//File BSIFFile = new File(BSIFPath);
 	//BufferedImage BSIFImage = ImageIO.read(BSIFFile);
@@ -593,7 +680,86 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end BSIF
-    
+    class ZoomInActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea BSIFTA = new JTextArea(BSIFInfo);
+	    BSIFTA.setEditable(false);
+	    BSIFTA.setLineWrap(true);
+	    BSIFTA.setWrapStyleWord(true);
+	    JScrollPane BSIFScroll = new JScrollPane(BSIFTA);
+	    BSIFScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    BSIFTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(BSIFScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(BSIFLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL BSIF_URL = getClass().getResource("/BSIF.jpg");
+	    ImageIcon icon = new ImageIcon(BSIF_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel BSIFlabel = new JLabel(finalIcon);
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomOutBSIFActionListener());
+	    //String BSIFPath = "BSIF.jpg";
+	    //File BSIFFile = new File(BSIFPath);
+	    //BufferedImage BSIFImage = ImageIO.read(BSIFFile);
+	    //JLabel BSIFlabel = new JLabel(new ImageIcon(BSIFImage));
+	    newPanel.add(BSIFlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutBSIFActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea BSIFTA = new JTextArea(BSIFInfo);
+	    BSIFTA.setEditable(false);
+	    BSIFTA.setLineWrap(true);
+	    BSIFTA.setWrapStyleWord(true);
+	    JScrollPane BSIFScroll = new JScrollPane(BSIFTA);
+	    BSIFScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    BSIFTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(BSIFScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(BSIFLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL BSIF_URL = getClass().getResource("/BSIF.jpg");
+	    JLabel BSIFlabel = new JLabel(new ImageIcon(BSIF_URL));
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInBSIFActionListener());
+	    //String BSIFPath = "BSIF.jpg";
+	    //File BSIFFile = new File(BSIFPath);
+	    //BufferedImage BSIFImage = ImageIO.read(BSIFFile);
+	    //JLabel BSIFlabel = new JLabel(new ImageIcon(BSIFImage));
+	    newPanel.add(BSIFlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
     public void GIRV() throws IOException{//gui with directions for Girvetz
 	guiRemoveAll();
 	newPanel.setBackground(Color.WHITE);
@@ -613,6 +779,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
 	JLabel GIRVlabel = new JLabel(new ImageIcon(GIRV_URL));
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInGIRVActionListener());
 	//String GIRVPath = "GIRV.jpg";
 	//File GIRVFile = new File(GIRVPath);
 	//BufferedImage GIRVImage = ImageIO.read(GIRVFile);
@@ -626,7 +796,87 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end GIRV
-    
+    class ZoomInGIRVActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea GIRVTA = new JTextArea(GIRVInfo);
+	    GIRVTA.setEditable(false);
+	    GIRVTA.setLineWrap(true);
+	    GIRVTA.setWrapStyleWord(true);
+	    JScrollPane GIRVScroll = new JScrollPane(GIRVTA);
+	    GIRVScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    GIRVTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(GIRVScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(GIRVLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
+	    ImageIcon icon = new Icon(GIRV_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel GIRVlabel = new JLabel(finalIcon);
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomInGIRVActionListener());
+	    //String GIRVPath = "GIRV.jpg";
+	    //File GIRVFile = new File(GIRVPath);
+	    //BufferedImage GIRVImage = ImageIO.read(GIRVFile);
+	    //JLabel GIRVlabel = new JLabel(new ImageIcon(GIRVImage));
+	    newPanel.add(GIRVlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutGIRVActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    	guiRemoveAll();
+		newPanel.setBackground(Color.WHITE);
+		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+		newPanel.setSize(800,625);
+		JTextArea GIRVTA = new JTextArea(GIRVInfo);
+		GIRVTA.setEditable(false);
+		GIRVTA.setLineWrap(true);
+		GIRVTA.setWrapStyleWord(true);
+		JScrollPane GIRVScroll = new JScrollPane(GIRVTA);
+		GIRVScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		GIRVTA.setPreferredSize(new Dimension(200,600));
+		infoPanel.add(GIRVScroll);
+		bottomPanel.add(cancel);
+		newPanel.add(bottomPanel);
+		topPanel.add(GIRVLabel);
+		cancel.addActionListener(new CancelActionListener());
+		java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
+		JLabel GIRVlabel = new JLabel(new ImageIcon(GIRV_URL));
+		ZoomIn.setPreferredSize(new Dimension(100,50));
+		bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		bottomPanel.add(ZoomIn);
+		ZoomIn.addActionListener(new ZoomInGIRVActionListener());
+		//String GIRVPath = "GIRV.jpg";
+		//File GIRVFile = new File(GIRVPath);
+		//BufferedImage GIRVImage = ImageIO.read(GIRVFile);
+		//JLabel GIRVlabel = new JLabel(new ImageIcon(GIRVImage));
+		newPanel.add(GIRVlabel);
+		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+		frame.setSize(1000,625);
+		frame.setBackground(Color.WHITE);
+		frame.setVisible(true);
+	}
+    }
+
     public void HFH() throws IOException{//gui with directions with HFH
 	guiRemoveAll();
 	newPanel.setBackground(Color.WHITE);
@@ -646,7 +896,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
 	JLabel HFHlabel = new JLabel(new ImageIcon(HFH_URL));
-	
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInHFHActionListener());
 	//String HFHPath = "HFH.jpg";
 	//File HFHFile = new File(HFHPath);
 	//BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -660,7 +913,86 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end HFH
-    
+    class ZoomInHFHActionListener implements ActionListener{
+	public void actionPerformd(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea HFHTA = new JTextArea(T429Info);
+	    HFHTA.setEditable(false);
+	    HFHTA.setLineWrap(true);
+	    HFHTA.setWrapStyleWord(true);
+	    JScrollPane HFHScroll = new JScrollPane(HFHTA);
+	    HFHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    HFHTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(HFHScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(HFHLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
+	    ImageIcon icon = new ImageIcon(HRH_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel HFHlabel = new JLabel(finalIcon);
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomInHFHActionListener());
+	    //String HFHPath = "HFH.jpg";
+	    //File HFHFile = new File(HFHPath);
+	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
+	    //JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
+	    newPanel.add(HFHlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutHFHActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea HFHTA = new JTextArea(T429Info);
+	    HFHTA.setEditable(false);
+	    HFHTA.setLineWrap(true);
+	    HFHTA.setWrapStyleWord(true);
+	    JScrollPane HFHScroll = new JScrollPane(HFHTA);
+	    HFHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    HFHTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(HFHScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(HFHLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
+	    JLabel HFHlabel = new JLabel(new ImageIcon(HFH_URL));
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInHFHActionListener());
+	    //String HFHPath = "HFH.jpg";
+	    //File HFHFile = new File(HFHPath);
+	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
+	    //JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
+	    newPanel.add(HFHlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
     public void HSSB() throws IOException{//gui with directions for HSSB
 	guiRemoveAll();
 	newPanel.setBackground(Color.WHITE);
@@ -680,7 +1012,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL HSSB_URL = getClass().getResource("/HSSB.jpg");
 	JLabel HSSBlabel = new JLabel(new ImageIcon(HSSB_URL));
-	
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInHSSBActionListener());
 	//String HFHPath = "HSSB.jpg";
 	//File HFHFile = new File(HFHPath);
 	//BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -694,6 +1029,48 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end HSSB
+    class ZoomInHSSBActionListner implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea HSSBTA = new JTextArea(HSSBInfo);
+	    HSSBTA.setEditable(false);
+	    HSSBTA.setLineWrap(true);
+	    HSSBTA.setWrapStyleWord(true);
+	    JScrollPane HSSBScroll = new JScrollPane(HSSBTA);
+	    HSSBScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    HSSBTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(HSSBScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(HSSBLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL HSSB_URL = getClass().getResource("/HSSB.jpg");
+	    ImageIcon icon = new ImageIcon(HSSB_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel HSSBlabel = new JLabel(new ImageIcon(HSSB_URL));
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomOutHSSBActionListener());
+	    //String HFHPath = "HSSB.jpg";
+	    //File HFHFile = new File(HFHPath);
+	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
+	    //JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
+	    newPanel.add(HSSBlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
     
     public void KERR() throws IOException{//gui with directions for Kerr
 	guiRemoveAll();
@@ -714,7 +1091,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
 	JLabel KERRlabel = new JLabel(new ImageIcon(KERR_URL));
-	
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInKERRActionListener());
 	//String KERRPath = "KERR.jpg";
 	//File KERRFile = new File(KERRPath);
 	//BufferedImage KERRImage = ImageIO.read(KERRFile);
@@ -729,11 +1109,91 @@ public class TheGUI{
 	frame.setVisible(true);
     }//end KERR
     
-    public void LLCH() throws IOException{//gui with directions for LLCH
-	guiRemoveAll();
-	newPanel.setBackground(Color.WHITE);
-	newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-	newPanel.setSize(800,625);
+    class ZoomInKERRActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea KERRTA = new JTextArea(KERRInfo);
+	    KERRTA.setEditable(false);
+	    KERRTA.setLineWrap(true);
+	    KERRTA.setWrapStyleWord(true);
+	    JScrollPane KERRScroll = new JScrollPane(KERRTA);
+	    KERRScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    KERRTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(KERRScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(KERRLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
+	    ImageIcon icon = new ImageIcon(KERR_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel KERRlabel = new JLabel(finalIcon);
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInKERRActionListener());
+	    //String KERRPath = "KERR.jpg";
+	    //File KERRFile = new File(KERRPath);
+	    //BufferedImage KERRImage = ImageIO.read(KERRFile);
+	    //JLabel KERRlabel = new JLabel(new ImageIcon(KERRImage));
+	    newPanel.add(KERRlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutKERRActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea KERRTA = new JTextArea(KERRInfo);
+	    KERRTA.setEditable(false);
+	    KERRTA.setLineWrap(true);
+	    KERRTA.setWrapStyleWord(true);
+	    JScrollPane KERRScroll = new JScrollPane(KERRTA);
+	    KERRScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    KERRTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(KERRScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(KERRLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
+	    JLabel KERRlabel = new JLabel(new ImageIcon(KERR_URL));
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInKERRActionListener());
+	    //String KERRPath = "KERR.jpg";
+	    //File KERRFile = new File(KERRPath);
+	    //BufferedImage KERRImage = ImageIO.read(KERRFile);
+	    //JLabel KERRlabel = new JLabel(new ImageIcon(KERRImage));
+	    newPanel.add(KERRlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+	    public void LLCH() throws IOException{//gui with directions for LLCH
+		guiRemoveAll();
+		newPanel.setBackground(Color.WHITE);
+		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+		newPanel.setSize(800,625);
 	JTextArea LLCHTA = new JTextArea(LLCHInfo);
 	LLCHTA.setEditable(false);
 	LLCHTA.setLineWrap(true);
@@ -751,6 +1211,10 @@ public class TheGUI{
 	//File LLCHFile = new File(LLCHPath);
 	//BufferedImage LLCHImage = ImageIO.read(LLCHFile);
 	JLabel LLCHlabel = new JLabel(new ImageIcon(LLCH_URL));
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInLLCHActionListener());
 	newPanel.add(LLCHlabel);
 	frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -780,7 +1244,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL PHELP_URL = getClass().getResource("/PHELP.jpg");
 	JLabel PHELPlabel = new JLabel(new ImageIcon(PHELP_URL));
-	
+	ZoomIn.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomIn);
+	ZoomIn.addActionListener(new ZoomInPHELPActionListener());
 	//String PHELPPath = "PHELP.jpg";
 	//File PHELPFile = new File(PHELPPath);
 	//BufferedImage PHELPImage = ImageIO.read(PHELPFile);
