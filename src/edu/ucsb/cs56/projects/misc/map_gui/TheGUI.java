@@ -40,8 +40,8 @@ public class TheGUI{
     JButton LLCH        =      new JButton("LLCH");//concert hall
     JButton PHELP       =      new JButton("PHELP");//phelps hall
     JButton cancel      =      new JButton("Cancel");//cancel button for subscreens
-    JButton ZoomIn      =      new JButton("Zoom -");
-    JButton ZoomOut     =      new JButton("Zoom +");
+    JButton ZoomIn      =      new JButton("Zoom +");
+    JButton ZoomOut     =      new JButton("Zoom -");
     JLabel T387Label    =      new JLabel("387 - Trailer 387");
     JLabel T429Label    =      new JLabel("429 - Trailer 429");
     JLabel BRDALabel    =      new JLabel("BRDA - Broida Hall");
@@ -276,11 +276,11 @@ public class TheGUI{
 
 
 		//added 5:02
-	ZoomIn.setPreferredSize(new Dimension(100,100));
+	ZoomIn.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(ZoomIn);
 
-	ZoomOut.setPreferredSize(new Dimension(100,100));
+	ZoomOut.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(ZoomOut);
 
@@ -600,7 +600,7 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end PHELP
-    
+
     //action listener class for the cancel button
     class CancelActionListener implements ActionListener{//the action listener when the cancel button is pressed
 	public void actionPerformed(ActionEvent event){//the action that is performed after pressing cancel on one of the direction guis
