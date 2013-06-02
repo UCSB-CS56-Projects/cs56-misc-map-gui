@@ -271,24 +271,9 @@ public class TheGUI{
 	topPanel.add(T387Label);//adds the label to the top panel
 	cancel.addActionListener(new CancelActionListener());//adds a new ActionListener to the Cancel button
 	java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
-<<<<<<< HEAD
 	ImageIcon icon = new ImageIcon(T387_URL);
 	JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
-=======
 
-
-	ImageIcon T387Icon = new ImageIcon(T387_URL); //added 1:07
-	Image T387Image = T387Icon.getImage();
-	Image T387Modded =  T387Image.getScaledInstance(2000,1200, java.awt.Image.SCALE_SMOOTH);  
-	ImageIcon newT387 = new ImageIcon(T387Modded);
-	
-
-	//JLabel T387label = new JLabel(new ImageIcon(T387_URL));//Creates a new label for the loaded image
-
-	JLabel T387label = new JLabel(newT387);//Creates a new label for the loaded image
-
-
->>>>>>> 6313540ae151c7a7973fc16b136e2c47284d77a7
 
 		//added 5:02
 	ZoomIn.setPreferredSize(new Dimension(100,50));
@@ -342,8 +327,11 @@ public class TheGUI{
 	    cancel.addActionListener(new CancelActionListener());//adds a new ActionListener to the Cancel button
 	    java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
 	    
-	    ImageIcon icon = new ImageIcon(T387_URL.getScaledInstance(1000, 1000, Image.SCALE_SMOOTH));
-	    JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
+	    ImageIcon icon = new ImageIcon(T387_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1000, 1000, Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel T387label = new JLabel(finalIcon);//Creates a new label for the loaded image
 	    
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
