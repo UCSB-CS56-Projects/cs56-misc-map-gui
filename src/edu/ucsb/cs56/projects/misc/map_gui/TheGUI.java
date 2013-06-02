@@ -42,6 +42,28 @@ public class TheGUI{
     JButton cancel      =      new JButton("Cancel");//cancel button for subscreens
     JButton ZoomIn      =      new JButton("Zoom +");
     JButton ZoomOut     =      new JButton("Zoom -");
+    JButton ZoomInT387      =      new JButton("Zoom +");
+    JButton ZoomOutT387     =      new JButton("Zoom -");
+    JButton ZoomInPHELP      =      new JButton("Zoom +");
+    JButton ZoomOutPHELP     =      new JButton("Zoom -");
+   
+    JButton ZoomInT429      =      new JButton("Zoom +");
+    JButton ZoomOutT429     =      new JButton("Zoom -");
+    JButton ZoomInBRDA      =      new JButton("Zoom +");
+    JButton ZoomOutBRDA     =      new JButton("Zoom -");
+    JButton ZoomInHSSB      =      new JButton("Zoom +");
+    JButton ZoomOutHSSB     =      new JButton("Zoom -");
+    JButton ZoomInHFH      =      new JButton("Zoom +");
+    JButton ZoomOutHFH     =      new JButton("Zoom -");
+    JButton ZoomInKERR      =      new JButton("Zoom +");
+    JButton ZoomOutKERR     =      new JButton("Zoom -");
+    JButton ZoomInLLCH      =      new JButton("Zoom +");
+    JButton ZoomOutLLCH     =      new JButton("Zoom -");
+    JButton ZoomInGIRV      =      new JButton("Zoom +");
+    JButton ZoomOutGIRV     =      new JButton("Zoom -");
+    JButton ZoomInBSIF      =      new JButton("Zoom +");
+    JButton ZoomOutBSIF     =      new JButton("Zoom -");
+
     JLabel T387Label    =      new JLabel("387 - Trailer 387");
     JLabel T429Label    =      new JLabel("429 - Trailer 429");
     JLabel BRDALabel    =      new JLabel("BRDA - Broida Hall");
@@ -276,20 +298,30 @@ public class TheGUI{
 	JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
 
 
+	/*
 		//added 5:02
 	ZoomIn.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(ZoomIn);
 	ZoomIn.addActionListener(new ZoomInT387ActionListener());
+	*/
+
 	
+	//edited 11:05 am
+	ZoomInT387.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomInT387);
+	ZoomInT387.addActionListener(new ZoomInT387ActionListener());
+	
+
 	//String Path = "387.jpg";
 	//File File = new File(Path);
 	//BufferedImage Image = ImageIO.read(File);
 	//JLabel label = new JLabel(new ImageIcon(Image));
 
 
-	T387label.setSize(new Dimension(1000,625));//added 12:35 edited from 200/200 to 200/100
-	T387Label.setVisible(false);
+	//	T387label.setSize(new Dimension(1000,625));//added 12:35 edited from 200/200 to 200/100
+	//	T387Label.setVisible(false);
 	newPanel.setMaximumSize(new Dimension(200,200));//added 12:35 edited from 20/20 to 200/200
 	//newPanel.setVisible(false);
 	
@@ -336,12 +368,19 @@ public class TheGUI{
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel T387label = new JLabel(finalIcon);//Creates a new label for the loaded image
 	  
-
+	    /* edited 11:13
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomOut);
 	    ZoomOut.addActionListener(new ZoomOutT387ActionListener());
+	    */
+
+	    ZoomOutT387.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOutT387);
+	    ZoomOutT387.addActionListener(new ZoomOutT387ActionListener());
 	    
+
 	    //String Path = "387.jpg";
 	    //File File = new File(Path);
 	    //BufferedImage Image = ImageIO.read(File);
@@ -378,7 +417,19 @@ public class TheGUI{
     }
 
    class ZoomOutT387ActionListener implements ActionListener{
-	public void actionPerformed(ActionEvent event){
+       /*  //READ THIS PLEASE
+       /*In this function, I replaced your code that you used to zoom out which was basically redrawing the original window that displayed the zoomed out map. I replaced it using a call to the intiatialization of T387 so it's a bit cleaner (basically its the same as the cancel call). 
+	
+       //tried using same cancel mechanic to recreate zoomed out
+       public void actionPerformed(ActionEvent event){//the action that is performed after pressing cancel on one of the direction guis
+	    try {T387();}//return back to zoomed out view, which first clears the current gui, which is the direction gui
+	    catch (IOException ex) {//catch an input/output exception
+		Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+       }
+       */
+	 //ORIGINAL ZOOMOUT ACTIONLISTENER BOHAN WROTE
+	 public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();//deletes current panels on the frame and creates a new one
 	    newPanel.setBackground(Color.WHITE);//creates new panel for the directions to Trailer 387
 	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
@@ -401,11 +452,19 @@ public class TheGUI{
 	    ImageIcon icon = new ImageIcon(T387_URL);
 	    JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
 	    
+	    /*
 	    ZoomIn.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomIn);
 	    ZoomIn.addActionListener(new ZoomInT387ActionListener());
+	    */
 	    
+	    
+	    ZoomInT387.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomInT387);
+	    ZoomInT387.addActionListener(new ZoomInT387ActionListener());
+
 	    //String Path = "387.jpg";
 	    //File File = new File(Path);
 	    //BufferedImage Image = ImageIO.read(File);
@@ -418,7 +477,8 @@ public class TheGUI{
 	    frame.setSize(1000,625);//sets the size of the frame
 	    frame.setBackground(Color.WHITE);//sets the background color of the frame to white
 	    frame.setVisible(true);//enables us to see the frame
-	}
+       
+	    }
     }
 
 
@@ -443,10 +503,10 @@ public class TheGUI{
 	java.net.URL T429_URL = getClass().getResource("/429.jpg");
 	JLabel T429label = new JLabel(new ImageIcon(T429_URL));
 	
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInT429.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInT429ActionListener());
+	bottomPanel.add(ZoomInT429);
+	ZoomInT429.addActionListener(new ZoomInT429ActionListener());
 	//String Path = "429.jpg";
 	//File File = new File(Path);
 	//BufferedImage Image = ImageIO.read(File);
@@ -489,10 +549,10 @@ public class TheGUI{
 	    
 
 
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutT429.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomOutT429ActionListener());
+	    bottomPanel.add(ZoomOutT429);
+	    ZoomOutT429.addActionListener(new ZoomOutT429ActionListener());
 	    //String Path = "429.jpg";
 	    //File File = new File(Path);
 	    //BufferedImage Image = ImageIO.read(File);
@@ -533,10 +593,10 @@ public class TheGUI{
 	    java.net.URL T429_URL = getClass().getResource("/429.jpg");
 	    JLabel T429label = new JLabel(new ImageIcon(T429_URL));
 	    
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInT429.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInT429ActionListener());
+	    bottomPanel.add(ZoomInT429);
+	    ZoomInT429.addActionListener(new ZoomInT429ActionListener());
 	    //String Path = "429.jpg";
 	    //File File = new File(Path);
 	    //BufferedImage Image = ImageIO.read(File);
@@ -574,10 +634,10 @@ public class TheGUI{
 	ImageIcon icon = new ImageIcon(BRDA_URL);
 	JLabel BRDAlabel = new JLabel(icon);
 
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInBRDA.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInBRDAActionListener());
+	bottomPanel.add(ZoomInBRDA);
+	ZoomInBRDA.addActionListener(new ZoomInBRDAActionListener());
 	//String BRDAPath = "BRDA.jpg";
 	//File BRDAFile = new File(BRDAPath);
 	//BufferedImage BRDAImage = ImageIO.read(BRDAFile);
@@ -618,10 +678,10 @@ public class TheGUI{
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel BRDAlabel = new JLabel(finalIcon);
 	    
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutBRDA.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomOutBRDAActionListener());
+	    bottomPanel.add(ZoomOutBRDA);
+	    ZoomOutBRDA.addActionListener(new ZoomOutBRDAActionListener());
 	    //String BRDAPath = "BRDA.jpg";
 	    //File BRDAFile = new File(BRDAPath);
 	    //BufferedImage BRDAImage = ImageIO.read(BRDAFile);
@@ -664,10 +724,10 @@ public class TheGUI{
 	    ImageIcon icon = new ImageIcon(BRDA_URL);
 	    JLabel BRDAlabel = new JLabel(icon);
 	    
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInBRDA.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInBRDAActionListener());
+	    bottomPanel.add(ZoomInBRDA);
+	    ZoomInBRDA.addActionListener(new ZoomInBRDAActionListener());
 	    //String BRDAPath = "BRDA.jpg";
 	    //File BRDAFile = new File(BRDAPath);
 	    //BufferedImage BRDAImage = ImageIO.read(BRDAFile);
@@ -702,10 +762,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL BSIF_URL = getClass().getResource("/BSIF.jpg");
 	JLabel BSIFlabel = new JLabel(new ImageIcon(BSIF_URL));
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInBSIF.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInBSIFActionListener());
+	bottomPanel.add(ZoomInBSIF);
+	ZoomInBSIF.addActionListener(new ZoomInBSIFActionListener());
 	//String BSIFPath = "BSIF.jpg";
 	//File BSIFFile = new File(BSIFPath);
 	//BufferedImage BSIFImage = ImageIO.read(BSIFFile);
@@ -744,10 +804,10 @@ public class TheGUI{
 	    Image ZoomedIn = image.getScaledInstance(1800,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel BSIFlabel = new JLabel(finalIcon);
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutBSIF.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomOutBSIFActionListener());
+	    bottomPanel.add(ZoomOutBSIF);
+	    ZoomOutBSIF.addActionListener(new ZoomOutBSIFActionListener());
 	    //String BSIFPath = "BSIF.jpg";
 	    //File BSIFFile = new File(BSIFPath);
 	    //BufferedImage BSIFImage = ImageIO.read(BSIFFile);
@@ -788,10 +848,10 @@ public class TheGUI{
 	    cancel.addActionListener(new CancelActionListener());
 	    java.net.URL BSIF_URL = getClass().getResource("/BSIF.jpg");
 	    JLabel BSIFlabel = new JLabel(new ImageIcon(BSIF_URL));
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInBSIF.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInBSIFActionListener());
+	    bottomPanel.add(ZoomInBSIF);
+	    ZoomInBSIF.addActionListener(new ZoomInBSIFActionListener());
 	    //String BSIFPath = "BSIF.jpg";
 	    //File BSIFFile = new File(BSIFPath);
 	    //BufferedImage BSIFImage = ImageIO.read(BSIFFile);
@@ -825,10 +885,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
 	JLabel GIRVlabel = new JLabel(new ImageIcon(GIRV_URL));
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInGIRV.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInGIRVActionListener());
+	bottomPanel.add(ZoomInGIRV);
+	ZoomInGIRV.addActionListener(new ZoomInGIRVActionListener());
 	//String GIRVPath = "GIRV.jpg";
 	//File GIRVFile = new File(GIRVPath);
 	//BufferedImage GIRVImage = ImageIO.read(GIRVFile);
@@ -867,10 +927,10 @@ public class TheGUI{
 	    Image ZoomedIn = image.getScaledInstance(2000,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel GIRVlabel = new JLabel(finalIcon);
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutGIRV.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomInGIRVActionListener());
+	    bottomPanel.add(ZoomOutGIRV);
+	    ZoomOutGIRV.addActionListener(new ZoomOutGIRVActionListener());//switched from girv to HSSB
 	    //String GIRVPath = "GIRV.jpg";
 	    //File GIRVFile = new File(GIRVPath);
 	    //BufferedImage GIRVImage = ImageIO.read(GIRVFile);
@@ -912,10 +972,10 @@ public class TheGUI{
 		cancel.addActionListener(new CancelActionListener());
 		java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
 		JLabel GIRVlabel = new JLabel(new ImageIcon(GIRV_URL));
-		ZoomIn.setPreferredSize(new Dimension(100,50));
+		ZoomInGIRV.setPreferredSize(new Dimension(100,50));
 		bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-		bottomPanel.add(ZoomIn);
-		ZoomIn.addActionListener(new ZoomInGIRVActionListener());
+		bottomPanel.add(ZoomInGIRV);
+		ZoomInGIRV.addActionListener(new ZoomInGIRVActionListener());
 		//String GIRVPath = "GIRV.jpg";
 		//File GIRVFile = new File(GIRVPath);
 		//BufferedImage GIRVImage = ImageIO.read(GIRVFile);
@@ -950,10 +1010,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
 	JLabel HFHlabel = new JLabel(new ImageIcon(HFH_URL));
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInHFH.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInHFHActionListener());
+	bottomPanel.add(ZoomInHFH);
+	ZoomInHFH.addActionListener(new ZoomInHFHActionListener());
 	//String HFHPath = "HFH.jpg";
 	//File HFHFile = new File(HFHPath);
 	//BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -992,10 +1052,10 @@ public class TheGUI{
 	    Image ZoomedIn = image.getScaledInstance(1500,900,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel HFHlabel = new JLabel(finalIcon);
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutHFH.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomInHFHActionListener());
+	    bottomPanel.add(ZoomOutHFH);
+	    ZoomOutHFH.addActionListener(new ZoomOutHFHActionListener());
 	    //String HFHPath = "HFH.jpg";
 	    //File HFHFile = new File(HFHPath);
 	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -1038,10 +1098,10 @@ public class TheGUI{
 	    cancel.addActionListener(new CancelActionListener());
 	    java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
 	    JLabel HFHlabel = new JLabel(new ImageIcon(HFH_URL));
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInHFH.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInHFHActionListener());
+	    bottomPanel.add(ZoomInHFH);
+	    ZoomInHFH.addActionListener(new ZoomInHFHActionListener());
 	    //String HFHPath = "HFH.jpg";
 	    //File HFHFile = new File(HFHPath);
 	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -1075,10 +1135,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL HSSB_URL = getClass().getResource("/HSSB.jpg");
 	JLabel HSSBlabel = new JLabel(new ImageIcon(HSSB_URL));
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInHSSB.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInHSSBActionListener());
+	bottomPanel.add(ZoomInHSSB);
+	ZoomInHSSB.addActionListener(new ZoomInHSSBActionListener());
 	//String HFHPath = "HSSB.jpg";
 	//File HFHFile = new File(HFHPath);
 	//BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -1120,10 +1180,10 @@ public class TheGUI{
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel HSSBlabel = new JLabel(finalIcon);
 	
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutHSSB.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomOutHSSBActionListener());
+	    bottomPanel.add(ZoomOutHSSB);
+	    ZoomOutHSSB.addActionListener(new ZoomOutHSSBActionListener());
 	    //String HFHPath = "HSSB.jpg";
 	    //File HFHFile = new File(HFHPath);
 	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -1166,10 +1226,10 @@ public class TheGUI{
 	    cancel.addActionListener(new CancelActionListener());
 	    java.net.URL HSSB_URL = getClass().getResource("/HSSB.jpg");
 	    JLabel HSSBlabel = new JLabel(new ImageIcon(HSSB_URL));
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInHSSB.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInHSSBActionListener());
+	    bottomPanel.add(ZoomInHSSB);
+	    ZoomInHSSB.addActionListener(new ZoomInHSSBActionListener());
 	    //String HFHPath = "HSSB.jpg";
 	    //File HFHFile = new File(HFHPath);
 	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -1204,10 +1264,10 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
 	JLabel KERRlabel = new JLabel(new ImageIcon(KERR_URL));
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInKERR.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInKERRActionListener());
+	bottomPanel.add(ZoomInKERR);
+	ZoomInKERR.addActionListener(new ZoomInKERRActionListener());
 	//String KERRPath = "KERR.jpg";
 	//File KERRFile = new File(KERRPath);
 	//BufferedImage KERRImage = ImageIO.read(KERRFile);
@@ -1247,10 +1307,10 @@ public class TheGUI{
 	    Image ZoomedIn = image.getScaledInstance(2000,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel KERRlabel = new JLabel(finalIcon);
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutKERR.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomInKERRActionListener());
+	    bottomPanel.add(ZoomOutKERR);
+	    ZoomOutKERR.addActionListener(new ZoomOutKERRActionListener());
 	    //String KERRPath = "KERR.jpg";
 	    //File KERRFile = new File(KERRPath);
 	    //BufferedImage KERRImage = ImageIO.read(KERRFile);
@@ -1289,10 +1349,10 @@ public class TheGUI{
 	    cancel.addActionListener(new CancelActionListener());
 	    java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
 	    JLabel KERRlabel = new JLabel(new ImageIcon(KERR_URL));
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInKERR.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInKERRActionListener());
+	    bottomPanel.add(ZoomInKERR);
+	    ZoomInKERR.addActionListener(new ZoomInKERRActionListener());
 	    //String KERRPath = "KERR.jpg";
 	    //File KERRFile = new File(KERRPath);
 	    //BufferedImage KERRImage = ImageIO.read(KERRFile);
@@ -1329,10 +1389,10 @@ public class TheGUI{
 	//File LLCHFile = new File(LLCHPath);
 	//BufferedImage LLCHImage = ImageIO.read(LLCHFile);
 	JLabel LLCHlabel = new JLabel(new ImageIcon(LLCH_URL));
-	ZoomIn.setPreferredSize(new Dimension(100,50));
+	ZoomInLLCH.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInLLCHActionListener());
+	bottomPanel.add(ZoomInLLCH);
+	ZoomInLLCH.addActionListener(new ZoomInLLCHActionListener());
 	newPanel.add(LLCHlabel);
 	frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -1346,7 +1406,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea LLCHTA = new JTextArea(LLCHInfo);
 	    LLCHTA.setEditable(false);
@@ -1366,13 +1427,17 @@ public class TheGUI{
 	//BufferedImage LLCHImage = ImageIO.read(LLCHFile);
 	    ImageIcon icon = new ImageIcon(LLCH_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(2000,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel LLCHlabel = new JLabel(finalIcon);
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    ZoomOutLLCH.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomOutLLCHActionListener());
+	    bottomPanel.add(ZoomOutLLCH);
+	    ZoomOutLLCH.addActionListener(new ZoomOutLLCHActionListener());
+
+	    LLCHlabel.setLocation(-500,-900);	//sets location of resized label
+	    LLCHlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+	    
 	    newPanel.add(LLCHlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -1406,10 +1471,10 @@ public class TheGUI{
 	    //File LLCHFile = new File(LLCHPath);
 	    //BufferedImage LLCHImage = ImageIO.read(LLCHFile);
 	    JLabel LLCHlabel = new JLabel(new ImageIcon(LLCH_URL));
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInLLCH.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInLLCHActionListener());
+	    bottomPanel.add(ZoomInLLCH);
+	    ZoomInLLCH.addActionListener(new ZoomInLLCHActionListener());
 	    newPanel.add(LLCHlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -1440,10 +1505,21 @@ public class TheGUI{
 	cancel.addActionListener(new CancelActionListener());
 	java.net.URL PHELP_URL = getClass().getResource("/PHELP.jpg");
 	JLabel PHELPlabel = new JLabel(new ImageIcon(PHELP_URL));
+
+	/*
 	ZoomIn.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(ZoomIn);
 	ZoomIn.addActionListener(new ZoomInPHELPActionListener());
+	*/
+
+	
+	ZoomInPHELP.setPreferredSize(new Dimension(100,50));
+	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	bottomPanel.add(ZoomInPHELP);
+	ZoomInPHELP.addActionListener(new ZoomInPHELPActionListener());
+	
+
 	//String PHELPPath = "PHELP.jpg";
 	//File PHELPFile = new File(PHELPPath);
 	//BufferedImage PHELPImage = ImageIO.read(PHELPFile);
@@ -1461,7 +1537,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea PHELPTA = new JTextArea(PHELPInfo);
 	    PHELPTA.setEditable(false);
@@ -1478,17 +1555,32 @@ public class TheGUI{
 	    java.net.URL PHELP_URL = getClass().getResource("/PHELP.jpg");
 	    ImageIcon icon = new ImageIcon(PHELP_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(1500,900,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel PHELPlabel = new JLabel(finalIcon);
+	    
+	    /*
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomOut);
 	    ZoomOut.addActionListener(new ZoomOutPHELPActionListener());
+	    */
+	    
+
+	    ZoomOutPHELP.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOutPHELP);
+	    ZoomOutPHELP.addActionListener(new ZoomOutPHELPActionListener());
+	    
 	    //String PHELPPath = "PHELP.jpg";
 	    //File PHELPFile = new File(PHELPPath);
 	    //BufferedImage PHELPImage = ImageIO.read(PHELPFile);
 	    //JLabel PHELPlabel = new JLabel(new ImageIcon(PHELPImage));
+
+	    
+	    PHELPlabel.setLocation(-650,-650);	//sets location of resized label
+	    PHELPlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+	 
 	    newPanel.add(PHELPlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -1500,6 +1592,16 @@ public class TheGUI{
 	}
     }
     class ZoomOutPHELPActionListener implements ActionListener{
+	
+	/*
+	public void actionPerformed(ActionEvent event){//the action that is performed after pressing cancel on one of the direction guis
+	    try {PHELP();}//return back to the home screen, which first clears the current gui, which is the direction gui
+	    catch (IOException ex) {//catch an input/output exception
+		Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	    }
+	*/
+	
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
@@ -1519,10 +1621,10 @@ public class TheGUI{
 	    cancel.addActionListener(new CancelActionListener());
 	    java.net.URL PHELP_URL = getClass().getResource("/PHELP.jpg");
 	    JLabel PHELPlabel = new JLabel(new ImageIcon(PHELP_URL));
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    ZoomInPHELP.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInPHELPActionListener());
+	    bottomPanel.add(ZoomInPHELP);
+	    ZoomInPHELP.addActionListener(new ZoomInPHELPActionListener());
 	    //String PHELPPath = "PHELP.jpg";
 	    //File PHELPFile = new File(PHELPPath);
 	    //BufferedImage PHELPImage = ImageIO.read(PHELPFile);
@@ -1535,7 +1637,7 @@ public class TheGUI{
 	    frame.setSize(1000,625);
 	    frame.setBackground(Color.WHITE);
 	    frame.setVisible(true);
-	}
+	    }
     }
 
     //action listener class for the cancel button
