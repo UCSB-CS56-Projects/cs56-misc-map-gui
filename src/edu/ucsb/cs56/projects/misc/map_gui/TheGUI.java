@@ -465,7 +465,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    // newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea T429TA = new JTextArea(T429Info);
 	    T429TA.setEditable(false);
@@ -486,6 +487,8 @@ public class TheGUI{
 	    ImageIcon finalIcon = new ImageIcon(ZoomIn);
 	    JLabel T429label = new JLabel(finalIcon);
 	    
+
+
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomOut);
@@ -593,7 +596,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea BRDATA = new JTextArea(BRDAInfo);
 	    BRDATA.setEditable(false);
@@ -610,7 +614,7 @@ public class TheGUI{
 	    java.net.URL BRDA_URL = getClass().getResource("/BRDA.jpg");
 	    ImageIcon icon = new ImageIcon(BRDA_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(1800,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel BRDAlabel = new JLabel(finalIcon);
 	    
@@ -622,6 +626,12 @@ public class TheGUI{
 	    //File BRDAFile = new File(BRDAPath);
 	    //BufferedImage BRDAImage = ImageIO.read(BRDAFile);
 	    //JLabel BRDAlabel = new JLabel(new ImageIcon(BRDAImage));
+	    
+	    //important  lines for zoom in: location and size (prevents clipping)
+	    BRDAlabel.setLocation(-790,-720);	//sets location of resized label	    
+	    BRDAlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+
+
 	    newPanel.add(BRDAlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
