@@ -603,7 +603,7 @@ public class TheGUI{
 	    frame.setVisible(true);
 	}
     }
-    class ZoomOutBRDAActionListner implements ActionListener{
+    class ZoomOutBRDAActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
@@ -680,7 +680,7 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end BSIF
-    class ZoomInActionListener implements ActionListener{
+    class ZoomInBSIFActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
@@ -815,7 +815,7 @@ public class TheGUI{
 	    topPanel.add(GIRVLabel);
 	    cancel.addActionListener(new CancelActionListener());
 	    java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
-	    ImageIcon icon = new Icon(GIRV_URL);
+	    ImageIcon icon = new ImageIcon(GIRV_URL);
 	    Image image = icon.getImage();
 	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
@@ -914,7 +914,7 @@ public class TheGUI{
 	frame.setVisible(true);
     }//end HFH
     class ZoomInHFHActionListener implements ActionListener{
-	public void actionPerformd(ActionEvent event){
+	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
 	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
@@ -932,7 +932,7 @@ public class TheGUI{
 	    topPanel.add(HFHLabel);
 	    cancel.addActionListener(new CancelActionListener());
 	    java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
-	    ImageIcon icon = new ImageIcon(HRH_URL);
+	    ImageIcon icon = new ImageIcon(HFH_URL);
 	    Image image = icon.getImage();
 	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
@@ -1029,7 +1029,7 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end HSSB
-    class ZoomInHSSBActionListner implements ActionListener{
+    class ZoomInHSSBActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
@@ -1057,6 +1057,44 @@ public class TheGUI{
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomOut);
 	    ZoomOut.addActionListener(new ZoomOutHSSBActionListener());
+	    //String HFHPath = "HSSB.jpg";
+	    //File HFHFile = new File(HFHPath);
+	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
+	    //JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
+	    newPanel.add(HSSBlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutHSSBActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea HSSBTA = new JTextArea(HSSBInfo);
+	    HSSBTA.setEditable(false);
+	    HSSBTA.setLineWrap(true);
+	    HSSBTA.setWrapStyleWord(true);
+	    JScrollPane HSSBScroll = new JScrollPane(HSSBTA);
+	    HSSBScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    HSSBTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(HSSBScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(HSSBLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL HSSB_URL = getClass().getResource("/HSSB.jpg");
+	    JLabel HSSBlabel = new JLabel(new ImageIcon(HSSB_URL));
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInHSSBActionListener());
 	    //String HFHPath = "HSSB.jpg";
 	    //File HFHFile = new File(HFHPath);
 	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
@@ -1130,13 +1168,13 @@ public class TheGUI{
 	    java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
 	    ImageIcon icon = new ImageIcon(KERR_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel KERRlabel = new JLabel(finalIcon);
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInKERRActionListener());
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomInKERRActionListener());
 	    //String KERRPath = "KERR.jpg";
 	    //File KERRFile = new File(KERRPath);
 	    //BufferedImage KERRImage = ImageIO.read(KERRFile);
@@ -1152,7 +1190,7 @@ public class TheGUI{
 	}
     }
     class ZoomOutKERRActionListener implements ActionListener{
-	public void actionPerformed(ActionEvent){
+	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
 	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
@@ -1189,11 +1227,11 @@ public class TheGUI{
 	    frame.setVisible(true);
 	}
     }
-	    public void LLCH() throws IOException{//gui with directions for LLCH
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
+    public void LLCH() throws IOException{//gui with directions for LLCH
+	guiRemoveAll();
+	newPanel.setBackground(Color.WHITE);
+	newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	newPanel.setSize(800,625);
 	JTextArea LLCHTA = new JTextArea(LLCHInfo);
 	LLCHTA.setEditable(false);
 	LLCHTA.setLineWrap(true);
@@ -1224,6 +1262,84 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end LLCH
+    class ZoomInLLCHActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea LLCHTA = new JTextArea(LLCHInfo);
+	    LLCHTA.setEditable(false);
+	    LLCHTA.setLineWrap(true);
+	    LLCHTA.setWrapStyleWord(true);
+	    JScrollPane LLCHScroll = new JScrollPane(LLCHTA);
+	    LLCHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    LLCHTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(LLCHScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(LLCHLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL LLCH_URL = getClass().getResource("/LLCH.jpg");
+	//String LLCHPath = "LLCH.jpg";
+	//File LLCHFile = new File(LLCHPath);
+	//BufferedImage LLCHImage = ImageIO.read(LLCHFile);
+	    ImageIcon icon = new ImageIcon(LLCH_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel LLCHlabel = new JLabel(finalIcon);
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomOutLLCHActionListener());
+	    newPanel.add(LLCHlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutLLCHActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea LLCHTA = new JTextArea(LLCHInfo);
+	    LLCHTA.setEditable(false);
+	    LLCHTA.setLineWrap(true);
+	    LLCHTA.setWrapStyleWord(true);
+	    JScrollPane LLCHScroll = new JScrollPane(LLCHTA);
+	    LLCHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    LLCHTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(LLCHScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(LLCHLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL LLCH_URL = getClass().getResource("/LLCH.jpg");
+	    //String LLCHPath = "LLCH.jpg";
+	    //File LLCHFile = new File(LLCHPath);
+	    //BufferedImage LLCHImage = ImageIO.read(LLCHFile);
+	    JLabel LLCHlabel = new JLabel(new ImageIcon(LLCH_URL));
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInLLCHActionListener());
+	    newPanel.add(LLCHlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
     
     public void PHELP() throws IOException{//gui with directions for Phelps
 	guiRemoveAll();
@@ -1261,6 +1377,86 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);
 	frame.setVisible(true);
     }//end PHELP
+    class ZoomInPHELPActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea PHELPTA = new JTextArea(PHELPInfo);
+	    PHELPTA.setEditable(false);
+	    PHELPTA.setLineWrap(true);
+	    PHELPTA.setWrapStyleWord(true);
+	    JScrollPane PHELPScroll = new JScrollPane(PHELPTA);
+	    PHELPScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    PHELPTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(PHELPScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(PHELPLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL PHELP_URL = getClass().getResource("/PHELP.jpg");
+	    ImageIcon icon = new ImageIcon(PHELP_URL);
+	    Image image = icon.getImage();
+	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
+	    JLabel PHELPlabel = new JLabel(finalIcon);
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomOutPHELPActionListener());
+	    //String PHELPPath = "PHELP.jpg";
+	    //File PHELPFile = new File(PHELPPath);
+	    //BufferedImage PHELPImage = ImageIO.read(PHELPFile);
+	    //JLabel PHELPlabel = new JLabel(new ImageIcon(PHELPImage));
+	    newPanel.add(PHELPlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
+    class ZoomOutPHELPActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();
+	    newPanel.setBackground(Color.WHITE);
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setSize(800,625);
+	    JTextArea PHELPTA = new JTextArea(PHELPInfo);
+	    PHELPTA.setEditable(false);
+	    PHELPTA.setLineWrap(true);
+	    PHELPTA.setWrapStyleWord(true);
+	    JScrollPane PHELPScroll = new JScrollPane(PHELPTA);
+	    PHELPScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    PHELPTA.setPreferredSize(new Dimension(200,600));
+	    infoPanel.add(PHELPScroll);
+	    bottomPanel.add(cancel);
+	    newPanel.add(bottomPanel);
+	    topPanel.add(PHELPLabel);
+	    cancel.addActionListener(new CancelActionListener());
+	    java.net.URL PHELP_URL = getClass().getResource("/PHELP.jpg");
+	    JLabel PHELPlabel = new JLabel(new ImageIcon(PHELP_URL));
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInPHELPActionListener());
+	    //String PHELPPath = "PHELP.jpg";
+	    //File PHELPFile = new File(PHELPPath);
+	    //BufferedImage PHELPImage = ImageIO.read(PHELPFile);
+	    //JLabel PHELPlabel = new JLabel(new ImageIcon(PHELPImage));
+	    newPanel.add(PHELPlabel);
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+	    frame.setSize(1000,625);
+	    frame.setBackground(Color.WHITE);
+	    frame.setVisible(true);
+	}
+    }
 
     //action listener class for the cancel button
     class CancelActionListener implements ActionListener{//the action listener when the cancel button is pressed
