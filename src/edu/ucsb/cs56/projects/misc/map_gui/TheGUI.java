@@ -272,7 +272,17 @@ public class TheGUI{
 	topPanel.add(T387Label);//adds the label to the top panel
 	cancel.addActionListener(new CancelActionListener());//adds a new ActionListener to the Cancel button
 	java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
-	JLabel T387label = new JLabel(new ImageIcon(T387_URL));//Creates a new label for the loaded image
+
+
+	ImageIcon T387Icon = new ImageIcon(T387_URL); //added 1:07
+	Image T387Image = T387Icon.getImage();
+	Image T387Modded =  T387Image.getScaledInstance(2000,1200, java.awt.Image.SCALE_SMOOTH);  
+	ImageIcon newT387 = new ImageIcon(T387Modded);
+	
+
+	//JLabel T387label = new JLabel(new ImageIcon(T387_URL));//Creates a new label for the loaded image
+
+	JLabel T387label = new JLabel(newT387);//Creates a new label for the loaded image
 
 
 
@@ -291,12 +301,22 @@ public class TheGUI{
 	//File File = new File(Path);
 	//BufferedImage Image = ImageIO.read(File);
 	//JLabel label = new JLabel(new ImageIcon(Image));
+
+
+	T387label.setSize(new Dimension(200,200));//added 12:35
+	T387Label.setVisible(false);
+	newPanel.setMaximumSize(new Dimension(20,20));//added 12:35
+	//newPanel.setVisible(false);
+	
 	newPanel.add(T387label);//adds the image label onto the new panel
 	frame.getContentPane().add(BorderLayout.EAST, infoPanel);//puts the panel with the direction text to the right side of the frame
 	frame.getContentPane().add(BorderLayout.NORTH, topPanel);//adds the top panel including the label to the top of the frame
 	frame.getContentPane().add(BorderLayout.CENTER,newPanel);//adds the new panel on the center of the frame
 	frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);//adds the bottom panel, or the pannel with the cancel button, to the bottom of the frame
-	frame.setSize(1000,625);//sets the size of the frame
+	frame.setSize(1000,625);//sets the size of the frame 
+	
+
+
 	frame.setBackground(Color.WHITE);//sets the background color of the frame to white
 	frame.setVisible(true);//enables us to see the frame
     }//end T387
