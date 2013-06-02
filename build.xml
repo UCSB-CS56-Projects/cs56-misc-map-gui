@@ -15,6 +15,7 @@
   <property name="quarter" value="S13" />
   <property name="issueNum" value="0000707" />
   <property name="mainClass" value="edu.ucsb.cs56.projects.misc.map_gui.Run" />
+
   
   <property name="projectName" value="${course}_${quarter}_${issueNum}" />
   
