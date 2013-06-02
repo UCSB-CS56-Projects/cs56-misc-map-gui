@@ -17,35 +17,35 @@ import java.awt.Dimension;
  * @author Aki Stankoski and Dennis Huynh
  */
 
-//Spencer's coment
+
 public class TheGUI{
     //declare the panels and buttons to be accessed from multiple methods  
 
-    JFrame frame        =      new JFrame("UCSB Campus Map");//main frame
-    JPanel thePanel     =      new JPanel();//Back homescreen panel
-    JPanel newPanel     =      new JPanel();// New panel when button is clicked
-    JPanel leftPanel    =      new JPanel();//Left homescreen panel
-    JPanel rightPanel   =      new JPanel();//Right homescreen panel
-    JPanel bottomPanel  =      new JPanel();//Bottom subpanels
-    JPanel topPanel     =      new JPanel();//Top subpanels
-    JPanel infoPanel    =      new JPanel();//info panel on subpanels
-    JButton T387        =      new JButton("387");//button for Trailer 387
-    JButton T429        =      new JButton("429");//trailer 429
-    JButton BRDA        =      new JButton("BRDA");//broida hall
-    JButton BSIF        =      new JButton("BSIF");//biological science instruction facility
-    JButton GIRV	    =	   new JButton("GIRV");//girvetz hall
-    JButton HSSB	    =      new JButton("HSSB");//humanities and social science
-    JButton HFH 	    =      new JButton("HFH");//harold frank hall
-    JButton KERR	    =      new JButton("KERR");//kerr hall
-    JButton LLCH        =      new JButton("LLCH");//concert hall
-    JButton PHELP       =      new JButton("PHELP");//phelps hall
-    JButton cancel      =      new JButton("Cancel");//cancel button for subscreens
-    JButton ZoomIn      =      new JButton("Zoom +");
-    JButton ZoomOut     =      new JButton("Zoom -");
+    JFrame frame            =      new JFrame("UCSB Campus Map");//main frame
+    JPanel thePanel         =      new JPanel();//Back homescreen panel
+    JPanel newPanel         =      new JPanel();// New panel when button is clicked
+    JPanel leftPanel        =      new JPanel();//Left homescreen panel
+    JPanel rightPanel       =      new JPanel();//Right homescreen panel
+    JPanel bottomPanel      =      new JPanel();//Bottom subpanels
+    JPanel topPanel         =      new JPanel();//Top subpanels
+    JPanel infoPanel        =      new JPanel();//info panel on subpanels
+    JButton T387            =      new JButton("387");//button for Trailer 387
+    JButton T429            =      new JButton("429");//trailer 429
+    JButton BRDA            =      new JButton("BRDA");//broida hall
+    JButton BSIF            =      new JButton("BSIF");//biological science instruction facility
+    JButton GIRV            =	   new JButton("GIRV");//girvetz hall
+    JButton HSSB            =      new JButton("HSSB");//humanities and social science
+    JButton HFH             =      new JButton("HFH");//harold frank hall
+    JButton KERR            =      new JButton("KERR");//kerr hall
+    JButton LLCH            =      new JButton("LLCH");//concert hall
+    JButton PHELP           =      new JButton("PHELP");//phelps hall
+    JButton cancel          =      new JButton("Cancel");//cancel button for subscreens
+    JButton ZoomIn          =      new JButton("Zoom +");
+    JButton ZoomOut         =      new JButton("Zoom -");
     JButton ZoomInT387      =      new JButton("Zoom +");
     JButton ZoomOutT387     =      new JButton("Zoom -");
-    JButton ZoomInPHELP      =      new JButton("Zoom +");
-    JButton ZoomOutPHELP     =      new JButton("Zoom -");
+    JButton ZoomInPHELP     =      new JButton("Zoom +");
+    JButton ZoomOutPHELP    =      new JButton("Zoom -");
    
     JButton ZoomInT429      =      new JButton("Zoom +");
     JButton ZoomOutT429     =      new JButton("Zoom -");
@@ -53,8 +53,8 @@ public class TheGUI{
     JButton ZoomOutBRDA     =      new JButton("Zoom -");
     JButton ZoomInHSSB      =      new JButton("Zoom +");
     JButton ZoomOutHSSB     =      new JButton("Zoom -");
-    JButton ZoomInHFH      =      new JButton("Zoom +");
-    JButton ZoomOutHFH     =      new JButton("Zoom -");
+    JButton ZoomInHFH       =      new JButton("Zoom +");
+    JButton ZoomOutHFH      =      new JButton("Zoom -");
     JButton ZoomInKERR      =      new JButton("Zoom +");
     JButton ZoomOutKERR     =      new JButton("Zoom -");
     JButton ZoomInLLCH      =      new JButton("Zoom +");
@@ -296,18 +296,7 @@ public class TheGUI{
 	java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
 	ImageIcon icon = new ImageIcon(T387_URL);
 	JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
-
-
-	/*
-		//added 5:02
-	ZoomIn.setPreferredSize(new Dimension(100,50));
-	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomIn);
-	ZoomIn.addActionListener(new ZoomInT387ActionListener());
-	*/
-
 	
-	//edited 11:05 am
 	ZoomInT387.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(ZoomInT387);
@@ -320,10 +309,7 @@ public class TheGUI{
 	//JLabel label = new JLabel(new ImageIcon(Image));
 
 
-	//	T387label.setSize(new Dimension(1000,625));//added 12:35 edited from 200/200 to 200/100
-	//	T387Label.setVisible(false);
-	newPanel.setMaximumSize(new Dimension(200,200));//added 12:35 edited from 20/20 to 200/200
-	//newPanel.setVisible(false);
+	newPanel.setMaximumSize(new Dimension(200,200));
 	
 	newPanel.add(T387label);//adds the image label onto the new panel
 	frame.getContentPane().add(BorderLayout.EAST, infoPanel);//puts the panel with the direction text to the right side of the frame
@@ -368,30 +354,16 @@ public class TheGUI{
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel T387label = new JLabel(finalIcon);//Creates a new label for the loaded image
 	  
-	    /* edited 11:13
-	    ZoomOut.setPreferredSize(new Dimension(100,50));
-	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomOut);
-	    ZoomOut.addActionListener(new ZoomOutT387ActionListener());
-	    */
-
 	    ZoomOutT387.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomOutT387);
 	    ZoomOutT387.addActionListener(new ZoomOutT387ActionListener());
 	    
-
 	    //String Path = "387.jpg";
 	    //File File = new File(Path);
 	    //BufferedImage Image = ImageIO.read(File);
 	    //JLabel label = new JLabel(new ImageIcon(Image));
-	  
-	  
-	    // T387label.setLocation(999, 999);
-	    //newPanel.setLocation(999,999);
-	    
-	    
-	    //important  lines for zoom in: location and size (prevents clipping)
+     
 	    T387label.setLocation(-550,-900);	//sets location of resized label	    
 	    T387label.setSize(new Dimension(2000,2000));//sets size of resized label
 	    //T387Label.setVisible(false);
@@ -400,11 +372,6 @@ public class TheGUI{
 	      //    T387label.setLocation(-50,-200);
 
 	    newPanel.add(T387label);//adds the image label onto the new panel
-
-
-	    //T387Label.setBounds(3000,3000, 300,300); //added 6:11
-	    // newPanel.setLocation(999,999);
-	    //T387label.setLocation(200, 200);
 		    
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);//puts the panel with the direction text to the right side of the frame
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);//adds the top panel including the label to the top of the frame
@@ -417,19 +384,7 @@ public class TheGUI{
     }
 
    class ZoomOutT387ActionListener implements ActionListener{
-       /*  //READ THIS PLEASE
-       /*In this function, I replaced your code that you used to zoom out which was basically redrawing the original window that displayed the zoomed out map. I replaced it using a call to the intiatialization of T387 so it's a bit cleaner (basically its the same as the cancel call). 
-	
-       //tried using same cancel mechanic to recreate zoomed out
-       public void actionPerformed(ActionEvent event){//the action that is performed after pressing cancel on one of the direction guis
-	    try {T387();}//return back to zoomed out view, which first clears the current gui, which is the direction gui
-	    catch (IOException ex) {//catch an input/output exception
-		Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
-	    }
-       }
-       */
-	 //ORIGINAL ZOOMOUT ACTIONLISTENER BOHAN WROTE
-	 public void actionPerformed(ActionEvent event){
+      	 public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();//deletes current panels on the frame and creates a new one
 	    newPanel.setBackground(Color.WHITE);//creates new panel for the directions to Trailer 387
 	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
@@ -451,13 +406,6 @@ public class TheGUI{
 	    java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
 	    ImageIcon icon = new ImageIcon(T387_URL);
 	    JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
-	    
-	    /*
-	    ZoomIn.setPreferredSize(new Dimension(100,50));
-	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    bottomPanel.add(ZoomIn);
-	    ZoomIn.addActionListener(new ZoomInT387ActionListener());
-	    */
 	    
 	    
 	    ZoomInT387.setPreferredSize(new Dimension(100,50));
