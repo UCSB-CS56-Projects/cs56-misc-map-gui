@@ -944,7 +944,7 @@ public class TheGUI{
 	newPanel.setBackground(Color.WHITE);
 	newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 	newPanel.setSize(800,625);
-	JTextArea HFHTA = new JTextArea(T429Info);
+	JTextArea HFHTA = new JTextArea(HFHInfo);
 	HFHTA.setEditable(false);
 	HFHTA.setLineWrap(true);
 	HFHTA.setWrapStyleWord(true);
@@ -982,7 +982,7 @@ public class TheGUI{
 	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
-	    JTextArea HFHTA = new JTextArea(T429Info);
+	    JTextArea HFHTA = new JTextArea(HFHInfo);
 	    HFHTA.setEditable(false);
 	    HFHTA.setLineWrap(true);
 	    HFHTA.setWrapStyleWord(true);
@@ -1032,7 +1032,7 @@ public class TheGUI{
 	    newPanel.setBackground(Color.WHITE);
 	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 	    newPanel.setSize(800,625);
-	    JTextArea HFHTA = new JTextArea(T429Info);
+	    JTextArea HFHTA = new JTextArea(HFHInfo);
 	    HFHTA.setEditable(false);
 	    HFHTA.setLineWrap(true);
 	    HFHTA.setWrapStyleWord(true);
