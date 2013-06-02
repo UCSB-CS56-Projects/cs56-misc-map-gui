@@ -52,7 +52,7 @@ public class TheGUI{
     JLabel KERRLabel    =      new JLabel("KERR - Kerr Hall");
     JLabel LLCHLabel    =      new JLabel("LLCH - Lotte-Lehmann Concert Hall");
     JLabel PHELPLabel   =      new JLabel("PHELP - Phelps Hall");
-    
+  
     
     //building information
     String T387Info =//directions to get to trailer 387 from storke tower
@@ -252,6 +252,7 @@ public class TheGUI{
     }//end guiRemoveAll
     
     public void T387() throws IOException{//the new gui including directions after clicking on the T387 button on the home menu
+	//newPanel.setLayout(null);
 	guiRemoveAll();//deletes current panels on the frame and creates a new one
 	newPanel.setBackground(Color.WHITE);//creates new panel for the directions to Trailer 387
 	newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
@@ -287,9 +288,9 @@ public class TheGUI{
 	//JLabel label = new JLabel(new ImageIcon(Image));
 
 
-	T387label.setSize(new Dimension(200,200));//added 12:35
+	T387label.setSize(new Dimension(1000,625));//added 12:35 edited from 200/200 to 200/100
 	T387Label.setVisible(false);
-	newPanel.setMaximumSize(new Dimension(20,20));//added 12:35
+	newPanel.setMaximumSize(new Dimension(200,200));//added 12:35 edited from 20/20 to 200/200
 	//newPanel.setVisible(false);
 	
 	newPanel.add(T387label);//adds the image label onto the new panel
@@ -307,10 +308,12 @@ public class TheGUI{
 
     class ZoomInT387ActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent event){
+
 	    guiRemoveAll();//deletes current panels on the frame and creates a new one
+	    newPanel.setLayout(null); //added 8:51am
 	    newPanel.setBackground(Color.WHITE);//creates new panel for the directions to Trailer 387
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
-	    newPanel.setSize(800,625);//sets the size of new panel
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
+	    newPanel.setSize(1000,625);//sets the size of new panel
 	    
 	    JTextArea T387TA = new JTextArea(T387Info);//creates a new space for text for directions
 	    T387TA.setEditable(false);//makes the new text area NOT editable
@@ -329,10 +332,11 @@ public class TheGUI{
 	    
 	    ImageIcon icon = new ImageIcon(T387_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500, 1500, Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(2000, 1200, Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel T387label = new JLabel(finalIcon);//Creates a new label for the loaded image
-	    
+	  
+
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomOut);
@@ -342,7 +346,27 @@ public class TheGUI{
 	    //File File = new File(Path);
 	    //BufferedImage Image = ImageIO.read(File);
 	    //JLabel label = new JLabel(new ImageIcon(Image));
+	  
+	  
+	    // T387label.setLocation(999, 999);
+	    //newPanel.setLocation(999,999);
+	    
+	    
+	    //important  lines for zoom in: location and size (prevents clipping)
+	    T387label.setLocation(-550,-900);	//sets location of resized label	    
+	    T387label.setSize(new Dimension(2000,2000));//sets size of resized label
+	    //T387Label.setVisible(false);
+	    // newPanel.setMaximumSize(new Dimension(200,200));//added 12:35 edited from 20/20 to 200/200
+	    //newPanel.setVisible(false);
+	      //    T387label.setLocation(-50,-200);
+
 	    newPanel.add(T387label);//adds the image label onto the new panel
+
+
+	    //T387Label.setBounds(3000,3000, 300,300); //added 6:11
+	    // newPanel.setLocation(999,999);
+	    //T387label.setLocation(200, 200);
+		    
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);//puts the panel with the direction text to the right side of the frame
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);//adds the top panel including the label to the top of the frame
 	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);//adds the new panel on the center of the frame
@@ -458,7 +482,7 @@ public class TheGUI{
 	    java.net.URL T429_URL = getClass().getResource("/429.jpg");
 	    ImageIcon icon = new ImageIcon(T429_URL);
 	    Image image = icon.getImage();
-	    Image ZoomIn = image.getScaledInstance(1500,1500, Image.SCALE_SMOOTH);
+	    Image ZoomIn = image.getScaledInstance(2000,1200, Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomIn);
 	    JLabel T429label = new JLabel(finalIcon);
 	    
@@ -470,6 +494,11 @@ public class TheGUI{
 	    //File File = new File(Path);
 	    //BufferedImage Image = ImageIO.read(File);
 	    //JLabel label = new JLabel(new ImageIcon(Image));
+
+	    //important  lines for zoom in: location and size (prevents clipping)
+	    T429label.setLocation(-550,-900);	//sets location of resized label	    
+	    T429label.setSize(new Dimension(2000,2000));//sets size of resized label
+
 	    newPanel.add(T429label);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
