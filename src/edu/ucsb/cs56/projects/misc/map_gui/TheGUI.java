@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.Dimension;
-
+//bohan's comment
 /**
  * TheGUI class creates the interface using swing for the map. 
  * @author Aki Stankoski and Dennis Huynh
