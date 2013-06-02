@@ -723,7 +723,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea BSIFTA = new JTextArea(BSIFInfo);
 	    BSIFTA.setEditable(false);
@@ -740,7 +741,7 @@ public class TheGUI{
 	    java.net.URL BSIF_URL = getClass().getResource("/BSIF.jpg");
 	    ImageIcon icon = new ImageIcon(BSIF_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(1800,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel BSIFlabel = new JLabel(finalIcon);
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
@@ -751,6 +752,12 @@ public class TheGUI{
 	    //File BSIFFile = new File(BSIFPath);
 	    //BufferedImage BSIFImage = ImageIO.read(BSIFFile);
 	    //JLabel BSIFlabel = new JLabel(new ImageIcon(BSIFImage));
+
+	    //important  lines for zoom in: location and size (prevents clipping)
+	    BSIFlabel.setLocation(-760,-900);	//sets location of resized label	    
+	    BSIFlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+
+	    
 	    newPanel.add(BSIFlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -839,7 +846,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea GIRVTA = new JTextArea(GIRVInfo);
 	    GIRVTA.setEditable(false);
@@ -856,7 +864,7 @@ public class TheGUI{
 	    java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
 	    ImageIcon icon = new ImageIcon(GIRV_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(2000,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel GIRVlabel = new JLabel(finalIcon);
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
@@ -867,6 +875,13 @@ public class TheGUI{
 	    //File GIRVFile = new File(GIRVPath);
 	    //BufferedImage GIRVImage = ImageIO.read(GIRVFile);
 	    //JLabel GIRVlabel = new JLabel(new ImageIcon(GIRVImage));
+	    
+	    //important  lines for zoom in: location and size (prevents clipping)
+	    GIRVlabel.setLocation(-500,-800);	//sets location of resized label	    
+	    GIRVlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+
+
+
 	    newPanel.add(GIRVlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -956,7 +971,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea HFHTA = new JTextArea(T429Info);
 	    HFHTA.setEditable(false);
@@ -973,7 +989,7 @@ public class TheGUI{
 	    java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
 	    ImageIcon icon = new ImageIcon(HFH_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(1500,900,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel HFHlabel = new JLabel(finalIcon);
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
@@ -984,6 +1000,14 @@ public class TheGUI{
 	    //File HFHFile = new File(HFHPath);
 	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
 	    //JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
+	    
+	       
+	    //important  lines for zoom in: location and size (prevents clipping)
+	    HFHlabel.setLocation(-820,-800);	//sets location of resized label	    
+	    HFHlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+
+
+	    
 	    newPanel.add(HFHlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -1072,7 +1096,8 @@ public class TheGUI{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    newPanel.setLayout(null);
 	    newPanel.setSize(800,625);
 	    JTextArea HSSBTA = new JTextArea(HSSBInfo);
 	    HSSBTA.setEditable(false);
@@ -1086,12 +1111,15 @@ public class TheGUI{
 	    newPanel.add(bottomPanel);
 	    topPanel.add(HSSBLabel);
 	    cancel.addActionListener(new CancelActionListener());
+	    
 	    java.net.URL HSSB_URL = getClass().getResource("/HSSB.jpg");
+	    
 	    ImageIcon icon = new ImageIcon(HSSB_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(2000,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
-	    JLabel HSSBlabel = new JLabel(new ImageIcon(HSSB_URL));
+	    JLabel HSSBlabel = new JLabel(finalIcon);
+	
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
 	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	    bottomPanel.add(ZoomOut);
@@ -1100,6 +1128,14 @@ public class TheGUI{
 	    //File HFHFile = new File(HFHPath);
 	    //BufferedImage HFHImage = ImageIO.read(HFHFile);
 	    //JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
+	    
+	    //important  lines for zoom in: location and size (prevents clipping)
+	    HSSBlabel.setLocation(-220,-800);	//sets location of resized label
+	    //HSSBlabel.setLocation(0,0);	//sets location of resized label	    
+		    
+	    HSSBlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+
+	    
 	    newPanel.add(HSSBlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -1189,8 +1225,9 @@ public class TheGUI{
     class ZoomInKERRActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 	    guiRemoveAll();
+	    newPanel.setLayout(null);
 	    newPanel.setBackground(Color.WHITE);
-	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	    //newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 	    newPanel.setSize(800,625);
 	    JTextArea KERRTA = new JTextArea(KERRInfo);
 	    KERRTA.setEditable(false);
@@ -1207,7 +1244,7 @@ public class TheGUI{
 	    java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
 	    ImageIcon icon = new ImageIcon(KERR_URL);
 	    Image image = icon.getImage();
-	    Image ZoomedIn = image.getScaledInstance(1500,1500,Image.SCALE_SMOOTH);
+	    Image ZoomedIn = image.getScaledInstance(2000,1200,Image.SCALE_SMOOTH);
 	    ImageIcon finalIcon = new ImageIcon(ZoomedIn);
 	    JLabel KERRlabel = new JLabel(finalIcon);
 	    ZoomOut.setPreferredSize(new Dimension(100,50));
@@ -1218,6 +1255,10 @@ public class TheGUI{
 	    //File KERRFile = new File(KERRPath);
 	    //BufferedImage KERRImage = ImageIO.read(KERRFile);
 	    //JLabel KERRlabel = new JLabel(new ImageIcon(KERRImage));
+
+	    KERRlabel.setLocation(-500,-750);	//sets location of resized label
+	    KERRlabel.setSize(new Dimension(2000,2000));//sets size of resized label
+
 	    newPanel.add(KERRlabel);
 	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);
