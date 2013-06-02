@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.Dimension;
-//bohan's comment
 /**
  * TheGUI class creates the interface using swing for the map. 
  * @author Aki Stankoski and Dennis Huynh
@@ -271,20 +270,14 @@ public class TheGUI{
 	topPanel.add(T387Label);//adds the label to the top panel
 	cancel.addActionListener(new CancelActionListener());//adds a new ActionListener to the Cancel button
 	java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
-	JLabel T387label = new JLabel(new ImageIcon(T387_URL));//Creates a new label for the loaded image
-
-
+	ImageIcon icon = new ImageIcon(T387_URL);
+	JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
 
 		//added 5:02
 	ZoomIn.setPreferredSize(new Dimension(100,50));
 	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
 	bottomPanel.add(ZoomIn);
-
-	ZoomOut.setPreferredSize(new Dimension(100,50));
-	bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	bottomPanel.add(ZoomOut);
-
-
+	ZoomIn.addActionListener(new ZoomInT387ActionListener());
 	
 	//String Path = "387.jpg";
 	//File File = new File(Path);
@@ -299,7 +292,98 @@ public class TheGUI{
 	frame.setBackground(Color.WHITE);//sets the background color of the frame to white
 	frame.setVisible(true);//enables us to see the frame
     }//end T387
-    
+
+    class ZoomInT387ActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();//deletes current panels on the frame and creates a new one
+	    newPanel.setBackground(Color.WHITE);//creates new panel for the directions to Trailer 387
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
+	    newPanel.setSize(800,625);//sets the size of new panel
+	    
+	    JTextArea T387TA = new JTextArea(T387Info);//creates a new space for text for directions
+	    T387TA.setEditable(false);//makes the new text area NOT editable
+	    T387TA.setLineWrap(true);//allows the lines to go to the next line if the current on is full
+	    T387TA.setWrapStyleWord(true);//allows long words to break off and continue in the proceeding line
+	    JScrollPane T387Scroll = new JScrollPane(T387TA);//creates a new scrollable widget
+	    T387Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//allows for scrolling on that widget
+	    T387TA.setPreferredSize(new Dimension(200,600));//sets the size of the text area
+	    infoPanel.add(T387Scroll);//adds the scrollin
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(cancel);//adds a cancel button on the panel located at the bottom of the frame
+	    newPanel.add(bottomPanel);//adds the bottom panel onto the new panel that has the directions to Trailer 387
+	    topPanel.add(T387Label);//adds the label to the top panel
+	    cancel.addActionListener(new CancelActionListener());//adds a new ActionListener to the Cancel button
+	    java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
+	    
+	    ImageIcon icon = new ImageIcon(T387_URL.getScaledInstance(1000, 1000, Image.SCALE_SMOOTH));
+	    JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
+	    
+	    ZoomOut.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomOut);
+	    ZoomOut.addActionListener(new ZoomOutT387ActionListener());
+	    
+	    //String Path = "387.jpg";
+	    //File File = new File(Path);
+	    //BufferedImage Image = ImageIO.read(File);
+	    //JLabel label = new JLabel(new ImageIcon(Image));
+	    newPanel.add(T387label);//adds the image label onto the new panel
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);//puts the panel with the direction text to the right side of the frame
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);//adds the top panel including the label to the top of the frame
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);//adds the new panel on the center of the frame
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);//adds the bottom panel, or the pannel with the cancel button, to the bottom of the frame
+	    frame.setSize(1000,625);//sets the size of the frame
+	    frame.setBackground(Color.WHITE);//sets the background color of the frame to white
+	    frame.setVisible(true);//enables us to see the frame
+	}
+    }
+
+   class ZoomOutT387ActionListener implements ActionListener{
+	public void actionPerformed(ActionEvent event){
+	    guiRemoveAll();//deletes current panels on the frame and creates a new one
+	    newPanel.setBackground(Color.WHITE);//creates new panel for the directions to Trailer 387
+	    newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));//sets the new panel to a BoxLayout
+	    newPanel.setSize(800,625);//sets the size of new panel
+	    
+	    JTextArea T387TA = new JTextArea(T387Info);//creates a new space for text for directions
+	    T387TA.setEditable(false);//makes the new text area NOT editable
+	    T387TA.setLineWrap(true);//allows the lines to go to the next line if the current on is full
+	    T387TA.setWrapStyleWord(true);//allows long words to break off and continue in the proceeding line
+	    JScrollPane T387Scroll = new JScrollPane(T387TA);//creates a new scrollable widget
+	    T387Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);//allows for scrolling on that widget
+	    T387TA.setPreferredSize(new Dimension(200,600));//sets the size of the text area
+	    infoPanel.add(T387Scroll);//adds the scrollin
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(cancel);//adds a cancel button on the panel located at the bottom of the frame
+	    newPanel.add(bottomPanel);//adds the bottom panel onto the new panel that has the directions to Trailer 387
+	    topPanel.add(T387Label);//adds the label to the top panel
+	    cancel.addActionListener(new CancelActionListener());//adds a new ActionListener to the Cancel button
+	    java.net.URL T387_URL = getClass().getResource("/387.jpg");//getClass().getResource loads the 387.jpg image, which has a line that directs from storke to the location
+	    ImageIcon icon = new ImageIcon(T387_URL);
+	    JLabel T387label = new JLabel(icon);//Creates a new label for the loaded image
+	    
+	    ZoomIn.setPreferredSize(new Dimension(100,50));
+	    bottomPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    bottomPanel.add(ZoomIn);
+	    ZoomIn.addActionListener(new ZoomInT387ActionListener());
+	    
+	    //String Path = "387.jpg";
+	    //File File = new File(Path);
+	    //BufferedImage Image = ImageIO.read(File);
+	    //JLabel label = new JLabel(new ImageIcon(Image));
+	    newPanel.add(T387label);//adds the image label onto the new panel
+	    frame.getContentPane().add(BorderLayout.EAST, infoPanel);//puts the panel with the direction text to the right side of the frame
+	    frame.getContentPane().add(BorderLayout.NORTH, topPanel);//adds the top panel including the label to the top of the frame
+	    frame.getContentPane().add(BorderLayout.CENTER,newPanel);//adds the new panel on the center of the frame
+	    frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);//adds the bottom panel, or the pannel with the cancel button, to the bottom of the frame
+	    frame.setSize(1000,625);//sets the size of the frame
+	    frame.setBackground(Color.WHITE);//sets the background color of the frame to white
+	    frame.setVisible(true);//enables us to see the frame
+	}
+    }
+
+
+
     public void T429() throws IOException{//same as above, but creates a gui with directions for Trailer 429
 	guiRemoveAll();
 	newPanel.setBackground(Color.WHITE);
@@ -610,7 +694,7 @@ public class TheGUI{
 	    }
 	}
     }//end CancelActionListener
-    
+
     class T387Listener implements ActionListener{//action listener when the T387 button on the homescreen is pressed/clicked
 	public void actionPerformed(ActionEvent event){
 	    try {T387();}//creates the trailer 387 gui
