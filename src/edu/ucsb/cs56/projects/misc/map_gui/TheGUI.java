@@ -35,28 +35,29 @@ public class TheGUI{
     JPanel bottomPanel   =      new JPanel();//Bottom subpanels
     JPanel topPanel      =      new JPanel();//Top subpanels
     JPanel infoPanel     =      new JPanel();//info panel on subpanels
-    JTextField searchBar =      new JTextField(20);//Seach bar
+    JTextField searchBar =      new JTextField(30);//Seach bar
 
     //Search bar popup box components
     final DefaultComboBoxModel suggestBoxModel = new DefaultComboBoxModel();
     final JComboBox suggestBox = new JComboBox(suggestBoxModel);
 
-    static JButton T387     =    new JButton("387");
-    static JButton T429     =    new JButton("429");
-    static JButton BRDA     =    new JButton("BRDA");
-    static JButton BSIF     =    new JButton("BSIF");
-    static JButton GIRV     =    new JButton("GIRV");
-    static JButton HSSB     =    new JButton("HSSB");
-    static JButton HFH      =    new JButton("HFH");
-    static JButton KERR     =    new JButton("KERR");
-    static JButton LLCH     =    new JButton("LLCH");
-    static JButton PHELP    =    new JButton("PHELP");
-    static JButton NORTH    =    new JButton("NORTH");
-    static JButton SOUTH    = 	 new JButton("SOUTH");
-    static JButton CAMPBELL = 	 new JButton("CAMPBELL");
-    static JButton ENGRSCI  =	 new JButton("ENGRSCI");
-    static JButton ENGR2    =	 new JButton("ENGR2");
-    static JButton LIBRARY  =	 new JButton ("LIBRARY");
+    static JButton T387     =    new JButton("<html><center>387<br />Trailer 387</center></html>");
+    static JButton T429     =    new JButton("<html><center>429<br />Trailer 429</center></html>");
+    static JButton BRDA     =    new JButton("<html><center>BRDA<br />Broida Hall</center></html>");
+    static JButton BSIF     =    new JButton("<html><center>BSIF<br />Biological Sciences Instruction Facility</center></html>");
+    static JButton GIRV     =    new JButton("<html><center>GIRV<br />Girvetz Hall</center></html>");
+    static JButton HSSB     =    new JButton("<html><center>HSSB<br />Humanities and Social Sciences Building</center></html>");
+    static JButton HFH      =    new JButton("<html><center>HFH<br />Harold Frank Hall</center></html>");
+    static JButton KERR     =    new JButton("<html><center>KERR<br />Kerr Hall</center></html>");
+    static JButton LLCH     =    new JButton("<html><center>LLCH<br />Lotte-Lehmann Concert Hall</center></html>");
+    static JButton PHELP    =    new JButton("<html><center>PHELP<br />Phelps Hall</center></html>");
+    static JButton NORTH    =    new JButton("<html><center>NORTH<br />North Hall</center></html>");
+    static JButton SOUTH    = 	 new JButton("<html><center>SOUTH<br />South Hall</center></html>");
+    static JButton CAMPBELL = 	 new JButton("<html><center>CAMBELL<br />Cambell Hall</center></html>");
+    static JButton ENGRSCI  =	 new JButton("<html><center>ENGRSCI<br />Engineering Science Building</center></html>");
+    static JButton ENGR2    =	 new JButton("<html><center>ENGR2<br />Engineering II Building</center></html>");
+    static JButton LIBRARY  =	 new JButton("<html><center>LIBRARY<br />Davidson Library</center></html>");
+    static JButton EXIT     =    new JButton("<html><center>EXIT<br />EXit Program</center></html>"); //added button for exit
     JButton cancel          =    new JButton("Cancel");//cancel button for subscreens
 
     JLabel searchLabel   =      new JLabel("Search: ");
@@ -160,47 +161,51 @@ public class TheGUI{
 	    ENGR2.addActionListener(new ENGR2Listener());
 	    LIBRARY.setPreferredSize(new Dimension(100,100));
 	    LIBRARY.addActionListener(new LIBRARYListener());
+	    EXIT.setPreferredSize(new Dimension(100,100));
+	    EXIT.addActionListener(new EXITListener());
 	    suggestBox.setPreferredSize(new Dimension(20, 0));
 
 		//adding panels and setting dimensions
 		topPanel.add(searchLabel);
 		topPanel.add(searchBar);
 		leftPanel.add(T387);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		leftPanel.add(T429);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		leftPanel.add(BRDA);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		leftPanel.add(BSIF);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		leftPanel.add(GIRV);
-	    leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
 	    leftPanel.add(NORTH);
-	    leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
 	    leftPanel.add(ENGRSCI);
-	    leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	    leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
 	    leftPanel.add(LIBRARY);
 		rightPanel.add(HSSB);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(HFH);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(KERR);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(LLCH);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(PHELP);
-	    rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	        rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(SOUTH);
-	    rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+	        rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(ENGR2);
-	    rightPanel.add(Box.createRigidArea(new Dimension(200,75)));
+	        rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+	        rightPanel.add(EXIT);
 		thePanel.add(leftPanel);
 		thePanel.add(rightPanel);
 		searchBar.setLayout(new BorderLayout());
         searchBar.add(suggestBox, BorderLayout.SOUTH);
 		frame.getContentPane().add(BorderLayout.CENTER, thePanel);
 		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.setSize(420, 625);
+		frame.setSize(600, 800);
+		frame.setResizable(false);
 		frame.setBackground(Color.WHITE);
 		frame.setVisible(true);
 		searchBar.requestFocus(); //put cursor in search bar
@@ -275,7 +280,7 @@ public class TheGUI{
   
 
 	public void T387() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -305,11 +310,41 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.T387Info, T387Label, "/387.jpg");
 	}//end T387
 
-	public void T429() throws IOException{
+	public void setupbutton(String info, JLabel Label, String pics){
 		guiRemoveAll();
+		newPanel.setBackground(Color.WHITE);
+		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+		newPanel.setSize(800,625);
+		JTextArea TA=new JTextArea(info);
+		TA.setEditable(false);
+		TA.setLineWrap(true);
+		TA.setWrapStyleWord(true);
+		JScrollPane Scroll = new JScrollPane(TA);
+		Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		TA.setPreferredSize(new Dimension(200,600));
+		infoPanel.add(Scroll);
+		bottomPanel.add(cancel);
+		newPanel.add(bottomPanel);
+		topPanel.add(Label);
+		cancel.addActionListener(new CancelActionListener());
+		java.net.URL URL = getClass().getResource(pics);
+		JLabel label = new JLabel(new ImageIcon(URL));
+		newPanel.add(label);
+		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+		frame.setSize(1000,625);
+		frame.setBackground(Color.WHITE);
+		frame.setVisible(true);
+	}
+
+	public void T429() throws IOException{
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -339,11 +374,13 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.T429Info, T429Label, "/429.jpg");
+
 	}//end T429
     
 	public void BRDA() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -372,11 +409,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.BRDAInfo, BRDALabel, "/BRDA.jpg");
 	}//end BRDA
        
 	public void BSIF() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -405,11 +443,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.BSIFInfo, BSIFLabel, "/BSIF.jpg");
 	}//end BSIF
        
 	public void GIRV() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -438,11 +477,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.GIRVInfo, GIRVLabel, "/GIRV.jpg");
 	}//end GIRV
        
 	public void HFH() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -472,11 +512,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.HFHInfo, HFHLabel, "/HFH.jpg");
 	}//end HFH
         
 	public void HSSB() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -506,11 +547,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.HSSBInfo, HSSBLabel, "/HSSB.jpg");
 	}//end HSSB
     
 	public void KERR() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -540,11 +582,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.KERRInfo, KERRLabel, "/KERR.jpg");
 	}//end KERR
     
 	public void LLCH() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -572,11 +615,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.LLCHInfo, LLCHLabel, "/LLCH.jpg");
 	}//end LLCH
        
 	public void PHELP() throws IOException{
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -606,11 +650,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.PHELPInfo, PHELPLabel, "/PHELP.jpg");
 	}//end PHELP
     
 	public void NORTH() throws IOException {
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -636,11 +681,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.NORTHInfo, NORTHLabel, "/NORTH.jpg");
 	}
 	
 	public void SOUTH() throws IOException {
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -666,11 +712,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.SOUTHInfo, SOUTHLabel, "/SOUTH.jpg");
 	}
 	
 	public void ENGRSCI() throws IOException {
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -696,11 +743,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.ENGRSCIInfo, ENGRSCILabel, "/ENGRSCI.jpg");
 	}
 	
 	public void ENGR2() throws IOException {
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -726,11 +774,12 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.ENGR2Info, ENGR2Label, "/ENGR2.jpg");
 	}
 	
 	public void LIBRARY() throws IOException {
-		guiRemoveAll();
+		/*guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
@@ -756,7 +805,11 @@ public class TheGUI{
 		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		frame.setSize(1000,625);
 		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		frame.setVisible(true);*/
+		setupbutton(MapStatics.LIBRARYInfo, LIBRARYLabel, "/LIBRARY.jpg");
+	}
+    	public void EXIT() throws IOException {
+	    System.exit(0);
 	}
 	
 	
@@ -959,6 +1012,15 @@ public class TheGUI{
 					}
 		}
 	}//end LIBRARYListener
+
+    	class EXITListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+		        try{EXIT();}
+		                catch (IOException ex){
+			                Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
+			                }
+		}
+	}//end EXITListener
 	
     
 } //end class
