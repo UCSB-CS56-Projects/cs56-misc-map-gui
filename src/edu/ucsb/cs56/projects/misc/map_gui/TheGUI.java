@@ -319,39 +319,39 @@ public class TheGUI{
 	public void T429() throws IOException{
 		setupbutton(MapStatics.T429Info, T429Label, "/429.jpg");
 
-	}//end T429
+	}
     
 	public void BRDA() throws IOException{
 		setupbutton(MapStatics.BRDAInfo, BRDALabel, "/BRDA.jpg");
-	}//end BRDA
+	}
        
 	public void BSIF() throws IOException{
 		setupbutton(MapStatics.BSIFInfo, BSIFLabel, "/BSIF.jpg");
-	}//end BSIF
+	}
        
 	public void GIRV() throws IOException{
 		setupbutton(MapStatics.GIRVInfo, GIRVLabel, "/GIRV.jpg");
-	}//end GIRV
+	}
        
 	public void HFH() throws IOException{
 		setupbutton(MapStatics.HFHInfo, HFHLabel, "/HFH.jpg");
-	}//end HFH
+	}
         
 	public void HSSB() throws IOException{
 		setupbutton(MapStatics.HSSBInfo, HSSBLabel, "/HSSB.jpg");
-	}//end HSSB
+	}
     
 	public void KERR() throws IOException{
 		setupbutton(MapStatics.KERRInfo, KERRLabel, "/KERR.jpg");
-	}//end KERR
+	}
     
 	public void LLCH() throws IOException{
 		setupbutton(MapStatics.LLCHInfo, LLCHLabel, "/LLCH.jpg");
-	}//end LLCH
+	}
        
 	public void PHELP() throws IOException{
 		setupbutton(MapStatics.PHELPInfo, PHELPLabel, "/PHELP.jpg");
-	}//end PHELP
+	}
     
 	public void NORTH() throws IOException {
 		setupbutton(MapStatics.NORTHInfo, NORTHLabel, "/NORTH.jpg");
