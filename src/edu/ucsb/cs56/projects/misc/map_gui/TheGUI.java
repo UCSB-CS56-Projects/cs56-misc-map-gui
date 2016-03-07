@@ -57,7 +57,7 @@ public class TheGUI{
     static JButton ENGRSCI  =	 new JButton("<html><center>ENGRSCI<br />Engineering Science Building</center></html>");
     static JButton ENGR2    =	 new JButton("<html><center>ENGR2<br />Engineering II Building</center></html>");
     static JButton LIBRARY  =	 new JButton("<html><center>LIBRARY<br />Davidson Library</center></html>");
-    static JButton EXIT     =    new JButton("<html><center>EXIT<br />EXit Program</center></html>"); //added button for exit
+    static JButton EXIT     =    new JButton("<html><center>EXIT<br />Exit Program</center></html>"); //added button for exit
     JButton cancel          =    new JButton("Cancel");//cancel button for subscreens
 
     JLabel searchLabel   =      new JLabel("Search: ");
@@ -107,6 +107,52 @@ public class TheGUI{
     private static void setAdjusting2(JComboBox cb, boolean tof) {
           cb.putClientProperty("is_adjusting_more", tof);
     }//end setAdjusting2
+    
+
+    //function to set up the welcome page
+    JFrame welcomeFrame = new JFrame("Welcome Page");
+    JButton Enter = new JButton("Enter");
+    JPanel tPanel = new JPanel();
+    JPanel mPanel = new JPanel();
+    JPanel nPanel = new JPanel();
+    JPanel bPanel = new JPanel();
+    JTextArea title = new JTextArea("cs56-misc-map-gui");
+    JTextArea text = new JTextArea("Map GUI for navigating around UCSB's campus");
+
+    public void setUpWelcomePage() throws IOException{
+		guiRemoveAll();
+		welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+		tPanel.setSize(480,50);
+		mPanel.setSize(480,50);
+		nPanel.setSize(480,108);
+		bPanel.setSize(600,800);
+
+		title.setEditable(false);
+		text.setEditable(false);
+		Enter.addActionListener(new ENTERActionListener());
+		Enter.setPreferredSize(new Dimension(150,75));
+		Enter.setFont(new Font("Enter",0,50));
+		java.net.URL UCSBLOGO_URL = getClass().getResource("/ucsb-wave-logo.png");
+		JLabel LOGOlabel = new JLabel(new ImageIcon(UCSBLOGO_URL));
+
+
+		tPanel.add(title);
+		mPanel.add(text);
+		nPanel.add(LOGOlabel);
+		bPanel.add(Enter);
+		
+		welcomeFrame.setLayout(new BoxLayout(welcomeFrame.getContentPane(), BoxLayout.Y_AXIS));
+		welcomeFrame.add(tPanel);
+		welcomeFrame.add(mPanel);
+		welcomeFrame.add(nPanel);
+		welcomeFrame.add(bPanel);
+		welcomeFrame.setSize(480,320);
+		welcomeFrame.setBackground(Color.WHITE);
+		welcomeFrame.setResizable(false);		
+		welcomeFrame.setVisible(true);
+	}//end setUpWelcomePage
+
 
         //function to set up the homescreen
 	public void setUpHomeScreen() throws IOException{
@@ -192,12 +238,12 @@ public class TheGUI{
 		rightPanel.add(LLCH);
 		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(PHELP);
-	        rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+	    rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(SOUTH);
-	        rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+	    rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
 		rightPanel.add(ENGR2);
-	        rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
-	        rightPanel.add(EXIT);
+	    rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+	    rightPanel.add(EXIT);
 		thePanel.add(leftPanel);
 		thePanel.add(rightPanel);
 		searchBar.setLayout(new BorderLayout());
@@ -311,7 +357,7 @@ public class TheGUI{
 		//frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
 		//frame.setSize(1000,625);
 		//frame.setBackground(Color.WHITE);
-		//frame.setVisible(true);*/
+		//frame.setVisible(true);
 		setupbutton(MapStatics.T387Info, T387Label, "/387.jpg");
 	}//end T387
 
@@ -607,14 +653,23 @@ public class TheGUI{
 		}
 	}//end LIBRARYListener
 
-    	class EXITListener implements ActionListener {
+    class EXITListener implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
-		        try{EXIT();}
-		                catch (IOException ex){
-			                Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
-			                }
+		    try{EXIT();}
+		        catch (IOException ex){
+			        Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
+			        }
 		}
 	}//end EXITListener
+
+	class ENTERActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			try {welcomeFrame.dispose();setUpHomeScreen();}
+			    catch (IOException ex) {
+				    Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
+				    }
+		}
+	}//end ENTERActionListener
 	
     
 } //end class

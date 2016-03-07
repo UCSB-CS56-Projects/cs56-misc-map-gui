@@ -11,6 +11,6 @@ import java.io.IOException;
 public class Run{
     public static void main(String[] args) throws IOException {
 	TheGUI a = new TheGUI();
-	a.setUpHomeScreen();
+	a.setUpWelcomePage();
     }
 }
