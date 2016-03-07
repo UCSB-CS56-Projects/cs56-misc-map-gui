@@ -60,6 +60,7 @@
     <delete failonerror="false" verbose="true">
       <fileset dir="build" includes="*.class"/>
     </delete>
+    <delete dir="build/edu/ucsb/cs56/projects/misc/map_gui" quiet="true"/>
     <delete dir="javadoc" quiet="true" />
     <delete dir="dist" quiet="true" />
     <!--
