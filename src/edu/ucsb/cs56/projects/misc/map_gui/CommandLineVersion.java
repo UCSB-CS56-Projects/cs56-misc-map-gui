@@ -33,59 +33,77 @@ public class CommandLineVersion{
 		String p="Physics";
 		String t="Trailer";
 		Scanner reader;
-		int i;
+		String i = "";
 		String s = "";
 		while(yes){
 		    reader=new Scanner(System.in);
 		    System.out.println("enter 1 for department and 2 for specific building");
-		    i=reader.nextInt();
+		    i=reader.nextLine();
+
+		    if(!(i.equals("1") || i.equals("2"))){
+		    	System.out.println("not a valid input, please enter 1 or 2");
+		    	continue;
+		    }
+
+
 		    TheGUI gui = new TheGUI();
-		    if(i==1){
+		    if(i.equals("1")){
 		       
-			reader = new Scanner(System.in);
-			System.out.println("Which department are you interested in?\n"
-					   +b+'\n'+e+'\n'+h+'\n'+l+'\n'+m+'\n'+p+'\n'+t+'\n');
-			s = reader.nextLine();
-			if(s.equals(b)){
+				reader = new Scanner(System.in);
+				System.out.println("Which department are you interested in?\n"
+						   +b+'\n'+e+'\n'+h+'\n'+l+'\n'+m+'\n'+p+'\n'+t);
+				s = reader.nextLine();
+				if(s.equals(b)){
 			    gui.BSIF();
-			}
-			else if(s.equals(e)){
-			    System.out.println("Which one? enter 1 or 2\n 1. Engineering Science\n 2.Engineering 2 ");
-				int j = reader.nextInt();
-			    if(i == 1)
-				gui.ENGRSCI();
-			    else 
-				gui.ENGR2();
-			}
-			else if(s.equals(h)){
-			    gui.HSSB();
-			}
-			else if(s.equals(l)){
-			    gui.LIBRARY();
-			}
-			else if(s.equals(m)){
-			    gui.LLCH();
-			}
-			else if(s.equals(p)){
-			    gui.BRDA();
-			}
-			else if(s.equals(t)){
-			    System.out.println("Which one? enter 1 or 2\n 1. T387\n 2.T429");
-				int j =reader.nextInt();
-                            if(i == 1)
-				gui.T387();
-                            else
-				gui.T429();
-			}
+				}
+				else if(s.equals(e)){
+			    	System.out.println("Which one? enter 1 or 2\n 1. Engineering Science\n 2. Engineering 2 ");
+					i = reader.nextLine();
+					if(!(i.equals("1") || i.equals("2"))){
+		    			System.out.println("not a valid input, please enter 1 or 2");
+		    			continue;
+		    		}
+			    	if(i.equals("1"))
+						gui.ENGRSCI();
+			    	else 
+						gui.ENGR2();
+				}
+				else if(s.equals(h)){
+			    	gui.HSSB();
+				}
+				else if(s.equals(l)){
+			   		gui.LIBRARY();
+				}
+				else if(s.equals(m)){
+			    	gui.LLCH();
+				}
+				else if(s.equals(p)){
+			    	gui.BRDA();
+				}
+				else if(s.equals(t)){
+			    	System.out.println("Which one? enter 1 or 2\n 1. T387\n 2. T429");
+					i =reader.nextLine();
+					if(!(i.equals("1") || i.equals("2"))){
+		    			System.out.println("not a valid input, please enter 1 or 2");
+		    			continue;
+		    		}
+                	if(i.equals("1"))
+						gui.T387();
+                	else
+						gui.T429();
+				}
 			
 		    }
-			else if(i==2){
+			else if(i.equals("2")){
 			    reader = new Scanner(System.in);
-			    System.out.println("Which building");
+			    System.out.println("Which building?");
 			    System.out.println(MapStatics.bldgAbbrs);
 			    s=reader.nextLine();	
 			    //TheGUI gui=new TheGUI();
-			    if(MapStatics.bldgAbbrs.contains(s)){
+			    if(!(MapStatics.bldgAbbrs.contains(s))){
+		    		System.out.println("not a valid input");
+		    		continue;
+		    	}
 				
 				if(MapStatics.bldgAbbrs.indexOf(s)==0){
 				    gui.T387();
@@ -133,7 +151,6 @@ public class CommandLineVersion{
 				    gui.SOUTH();
 				}
 				
-			    }
 			}	
 		    while(!(s.equals("yes")) && !(s.equals("no"))){
 			reader = new Scanner(System.in);
