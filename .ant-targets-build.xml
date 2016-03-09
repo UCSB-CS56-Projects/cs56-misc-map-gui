@@ -1,0 +1,8 @@
+clean
+compile
+jar
+javadoc
+linenumbers
+run
+runOnTerminal
+test
