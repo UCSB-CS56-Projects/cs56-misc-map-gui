@@ -18,11 +18,13 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Aki Stankoski and Dennis Huynh
  * @author Noah Malik and Jonathan Moody
+ * @author Jinfa Zhu and Shouzhi Wan
  */
 
 public class TheGUI{
@@ -42,21 +44,37 @@ public class TheGUI{
     final JComboBox suggestBox = new JComboBox(suggestBoxModel);
 
     static JButton T387     =    new JButton("<html><center>387<br />Trailer 387</center></html>");
+    static JButton T387info =  new JButton("learn more");
     static JButton T429     =    new JButton("<html><center>429<br />Trailer 429</center></html>");
+    static JButton T429info =  new JButton("learn more");
     static JButton BRDA     =    new JButton("<html><center>BRDA<br />Broida Hall</center></html>");
+     static JButton BRDAinfo =  new JButton("learn more");
     static JButton BSIF     =    new JButton("<html><center>BSIF<br />Biological Sciences Instruction Facility</center></html>");
+     static JButton BSIFinfo =  new JButton("learn more");
     static JButton GIRV     =    new JButton("<html><center>GIRV<br />Girvetz Hall</center></html>");
+     static JButton GIRVinfo =  new JButton("learn more");
     static JButton HSSB     =    new JButton("<html><center>HSSB<br />Humanities and Social Sciences Building</center></html>");
+     static JButton HSSBinfo =  new JButton("learn more");
     static JButton HFH      =    new JButton("<html><center>HFH<br />Harold Frank Hall</center></html>");
+     static JButton HFHinfo =  new JButton("learn more");
     static JButton KERR     =    new JButton("<html><center>KERR<br />Kerr Hall</center></html>");
+     static JButton KERRinfo =  new JButton("learn more");
     static JButton LLCH     =    new JButton("<html><center>LLCH<br />Lotte-Lehmann Concert Hall</center></html>");
+     static JButton LLCHinfo =  new JButton("learn more");
     static JButton PHELP    =    new JButton("<html><center>PHELP<br />Phelps Hall</center></html>");
+     static JButton PHELPinfo =  new JButton("learn more");
     static JButton NORTH    =    new JButton("<html><center>NORTH<br />North Hall</center></html>");
+     static JButton NORTHinfo =  new JButton("learn more");
     static JButton SOUTH    = 	 new JButton("<html><center>SOUTH<br />South Hall</center></html>");
+     static JButton SOUTHinfo =  new JButton("learn more");
     static JButton CAMPBELL = 	 new JButton("<html><center>CAMBELL<br />Cambell Hall</center></html>");
+     static JButton CAMPBELLinfo =  new JButton("learn more");
     static JButton ENGRSCI  =	 new JButton("<html><center>ENGRSCI<br />Engineering Science Building</center></html>");
+     static JButton ENGRSCIinfo =  new JButton("learn more");
     static JButton ENGR2    =	 new JButton("<html><center>ENGR2<br />Engineering II Building</center></html>");
+     static JButton ENGR2info =  new JButton("learn more");
     static JButton LIBRARY  =	 new JButton("<html><center>LIBRARY<br />Davidson Library</center></html>");
+     static JButton LIBRARYinfo =  new JButton("learn more");
     static JButton EXIT     =    new JButton("<html><center>EXIT<br />Exit Program</center></html>"); //added button for exit
     JButton cancel          =    new JButton("Cancel");//cancel button for subscreens
 
@@ -209,41 +227,103 @@ public class TheGUI{
 	    LIBRARY.addActionListener(new LIBRARYListener());
 	    EXIT.setPreferredSize(new Dimension(100,100));
 	    EXIT.addActionListener(new EXITListener());
+	    
+	    // POP UP INFORMATION WINDOWS
+	    	T387info.setPreferredSize(new Dimension(100,100));
+		T387info.addActionListener(new T387infoListener());
+		T429info.setPreferredSize(new Dimension(100,100));
+		T429info.addActionListener(new T429infoListener());
+		BRDAinfo.setPreferredSize(new Dimension(100,100));
+		BRDAinfo.addActionListener(new BRDAinfoListener());
+		BSIFinfo.setPreferredSize(new Dimension(100,100));
+		BSIFinfo.addActionListener(new BSIFinfoListener());
+		GIRVinfo.setPreferredSize(new Dimension(100,100));
+		GIRVinfo.addActionListener(new GIRVinfoListener());
+		HSSBinfo.setPreferredSize(new Dimension(100,100));
+		HSSBinfo.addActionListener(new HSSBinfoListener());
+		HFHinfo.setPreferredSize(new Dimension(100,100));
+		HFHinfo.addActionListener(new HFHinfoListener());
+		LLCHinfo.setPreferredSize(new Dimension(100,100));
+		LLCHinfo.addActionListener(new LLCHinfoListener());
+		PHELPinfo.setPreferredSize(new Dimension(100,100));
+		PHELPinfo.addActionListener(new PHELPinfoListener());
+		KERRinfo.setPreferredSize(new Dimension(100,100));
+		KERRinfo.addActionListener(new KERRinfoListener());
+	    NORTHinfo.setPreferredSize(new Dimension(100,100));
+	    NORTHinfo.addActionListener(new NORTHinfoListener());
+	    SOUTHinfo.setPreferredSize(new Dimension(100,100));
+	    SOUTHinfo.addActionListener(new SOUTHinfoListener());
+	    ENGRSCIinfo.setPreferredSize(new Dimension(100,100));
+	    ENGRSCIinfo.addActionListener(new ENGRSCIinfoListener());
+	    ENGR2info.setPreferredSize(new Dimension(100,100));
+	    ENGR2info.addActionListener(new ENGR2infoListener());
+
 	    suggestBox.setPreferredSize(new Dimension(20, 0));
 
 		//adding panels and setting dimensions
 		topPanel.add(searchLabel);
 		topPanel.add(searchBar);
 		leftPanel.add(T387);
+		leftPanel.add(T387info);
 		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+
 		leftPanel.add(T429);
+		leftPanel.add(T429info);
 		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		leftPanel.add(BRDA);
+		leftPanel.add(BRDAinfo);
 		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		leftPanel.add(BSIF);
+		leftPanel.add(BSIFinfo);
 		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		leftPanel.add(GIRV);
-	    leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
-	    leftPanel.add(NORTH);
-	    leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
-	    leftPanel.add(ENGRSCI);
-	    leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
-	    leftPanel.add(LIBRARY);
+		leftPanel.add(GIRVinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		leftPanel.add(NORTH);
+		leftPanel.add(NORTHinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		leftPanel.add(ENGRSCI);
+		leftPanel.add(ENGRSCIinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		leftPanel.add(LIBRARY);
+
 		rightPanel.add(HSSB);
+		rightPanel.add(HSSBinfo);
 		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(HFH);
+		rightPanel.add(HFHinfo);
 		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(KERR);
+		rightPanel.add(KERRinfo);
 		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(LLCH);
+		rightPanel.add(LLCHinfo);
 		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(PHELP);
-	    rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		rightPanel.add(PHELPinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(SOUTH);
-	    rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		rightPanel.add(SOUTHinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+
+		
 		rightPanel.add(ENGR2);
-	    rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
-	    rightPanel.add(EXIT);
+		rightPanel.add(ENGR2info);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		rightPanel.add(EXIT);
+		
 		thePanel.add(leftPanel);
 		thePanel.add(rightPanel);
 		searchBar.setLayout(new BorderLayout());
@@ -670,7 +750,89 @@ public class TheGUI{
 				    }
 		}
 	}//end ENTERActionListener
-	
+
+
+    // Listeners for info buttin
+    class T387infoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	    JOptionPane.showMessageDialog(new JFrame(), "Trailer office near Psychology building");
+	}
+    }
+    class T429infoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Trailer office near Psychology building");
+	}
+    }
+    class BRDAinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Physics");
+	}
+    }
+    class BSIFinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Biology Science");
+	}
+    }
+    class GIRVinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	    	JOptionPane.showMessageDialog(new JFrame(), "Classrooms of Sections");
+	}
+    }
+    class HSSBinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Human and Social Science");
+	}
+    }
+    class HFHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	  	JOptionPane.showMessageDialog(new JFrame(), "Department of Computer Science and Electrical Engineerings");
+	}
+    }
+    class KERRinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Digital and Media");
+	}
+    }
+    class LLCHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Music");
+	}
+    }
+    class PHELPinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Building of Computer Science labs");
+	}
+    }
+    class NORTHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Economics");
+	}
+    }
+    class SOUTHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	  	JOptionPane.showMessageDialog(new JFrame(), "Department of Mathmatics and Writing");
+	}
+    }
+    class CAMPBELLinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+		JOptionPane.showMessageDialog(new JFrame(), "The Hall for specail events");
+	}
+    }
+    class ENGRSCIinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+		JOptionPane.showMessageDialog(new JFrame(), "Department of Engineering Science");
+
+	}
+    }
+    class ENGR2infoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+		JOptionPane.showMessageDialog(new JFrame(), "Department of Engineering");
+	   
+	}
+    }
+  
     
+	   
+	   
 } //end class
 
