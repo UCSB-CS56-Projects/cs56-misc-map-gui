@@ -150,7 +150,7 @@ public class TheGUI{
 		text.setEditable(false);
 		Enter.addActionListener(new ENTERActionListener());
 		Enter.setPreferredSize(new Dimension(150,75));
-		Enter.setFont(new Font("Enter",0,50));
+		Enter.setFont(new Font("Enter",0,40));
 		java.net.URL UCSBLOGO_URL = getClass().getResource("/ucsb-wave-logo.png");
 		JLabel LOGOlabel = new JLabel(new ImageIcon(UCSBLOGO_URL));
 
