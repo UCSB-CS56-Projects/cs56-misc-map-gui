@@ -18,11 +18,13 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Aki Stankoski and Dennis Huynh
  * @author Noah Malik and Jonathan Moody
+ * @author Jinfa Zhu and Shouzhi Wan
  */
 
 public class TheGUI{
@@ -35,28 +37,45 @@ public class TheGUI{
     JPanel bottomPanel   =      new JPanel();//Bottom subpanels
     JPanel topPanel      =      new JPanel();//Top subpanels
     JPanel infoPanel     =      new JPanel();//info panel on subpanels
-    JTextField searchBar =      new JTextField(20);//Seach bar
+    JTextField searchBar =      new JTextField(30);//Seach bar
 
     //Search bar popup box components
     final DefaultComboBoxModel suggestBoxModel = new DefaultComboBoxModel();
     final JComboBox suggestBox = new JComboBox(suggestBoxModel);
 
-    static JButton T387     =    new JButton("387");
-    static JButton T429     =    new JButton("429");
-    static JButton BRDA     =    new JButton("BRDA");
-    static JButton BSIF     =    new JButton("BSIF");
-    static JButton GIRV     =    new JButton("GIRV");
-    static JButton HSSB     =    new JButton("HSSB");
-    static JButton HFH      =    new JButton("HFH");
-    static JButton KERR     =    new JButton("KERR");
-    static JButton LLCH     =    new JButton("LLCH");
-    static JButton PHELP    =    new JButton("PHELP");
-    static JButton NORTH    =    new JButton("NORTH");
-    static JButton SOUTH    = 	 new JButton("SOUTH");
-    static JButton CAMPBELL = 	 new JButton("CAMPBELL");
-    static JButton ENGRSCI  =	 new JButton("ENGRSCI");
-    static JButton ENGR2    =	 new JButton("ENGR2");
-    static JButton LIBRARY  =	 new JButton ("LIBRARY");
+    static JButton T387     =    new JButton("<html><center>387<br />Trailer 387</center></html>");
+    static JButton T387info =  new JButton("learn more");
+    static JButton T429     =    new JButton("<html><center>429<br />Trailer 429</center></html>");
+    static JButton T429info =  new JButton("learn more");
+    static JButton BRDA     =    new JButton("<html><center>BRDA<br />Broida Hall</center></html>");
+     static JButton BRDAinfo =  new JButton("learn more");
+    static JButton BSIF     =    new JButton("<html><center>BSIF<br />Biological Sciences Instruction Facility</center></html>");
+     static JButton BSIFinfo =  new JButton("learn more");
+    static JButton GIRV     =    new JButton("<html><center>GIRV<br />Girvetz Hall</center></html>");
+     static JButton GIRVinfo =  new JButton("learn more");
+    static JButton HSSB     =    new JButton("<html><center>HSSB<br />Humanities and Social Sciences Building</center></html>");
+     static JButton HSSBinfo =  new JButton("learn more");
+    static JButton HFH      =    new JButton("<html><center>HFH<br />Harold Frank Hall</center></html>");
+     static JButton HFHinfo =  new JButton("learn more");
+    static JButton KERR     =    new JButton("<html><center>KERR<br />Kerr Hall</center></html>");
+     static JButton KERRinfo =  new JButton("learn more");
+    static JButton LLCH     =    new JButton("<html><center>LLCH<br />Lotte-Lehmann Concert Hall</center></html>");
+     static JButton LLCHinfo =  new JButton("learn more");
+    static JButton PHELP    =    new JButton("<html><center>PHELP<br />Phelps Hall</center></html>");
+     static JButton PHELPinfo =  new JButton("learn more");
+    static JButton NORTH    =    new JButton("<html><center>NORTH<br />North Hall</center></html>");
+     static JButton NORTHinfo =  new JButton("learn more");
+    static JButton SOUTH    = 	 new JButton("<html><center>SOUTH<br />South Hall</center></html>");
+     static JButton SOUTHinfo =  new JButton("learn more");
+    static JButton CAMPBELL = 	 new JButton("<html><center>CAMBELL<br />Cambell Hall</center></html>");
+     static JButton CAMPBELLinfo =  new JButton("learn more");
+    static JButton ENGRSCI  =	 new JButton("<html><center>ENGRSCI<br />Engineering Science Building</center></html>");
+     static JButton ENGRSCIinfo =  new JButton("learn more");
+    static JButton ENGR2    =	 new JButton("<html><center>ENGR2<br />Engineering II Building</center></html>");
+     static JButton ENGR2info =  new JButton("learn more");
+    static JButton LIBRARY  =	 new JButton("<html><center>LIBRARY<br />Davidson Library</center></html>");
+     static JButton LIBRARYinfo =  new JButton("learn more");
+    static JButton EXIT     =    new JButton("<html><center>EXIT<br />Exit Program</center></html>"); //added button for exit
     JButton cancel          =    new JButton("Cancel");//cancel button for subscreens
 
     JLabel searchLabel   =      new JLabel("Search: ");
@@ -106,6 +125,52 @@ public class TheGUI{
     private static void setAdjusting2(JComboBox cb, boolean tof) {
           cb.putClientProperty("is_adjusting_more", tof);
     }//end setAdjusting2
+    
+
+    //function to set up the welcome page
+    JFrame welcomeFrame = new JFrame("Welcome Page");
+    JButton Enter = new JButton("Enter");
+    JPanel tPanel = new JPanel();
+    JPanel mPanel = new JPanel();
+    JPanel nPanel = new JPanel();
+    JPanel bPanel = new JPanel();
+    JTextArea title = new JTextArea("cs56-misc-map-gui");
+    JTextArea text = new JTextArea("Map GUI for navigating around UCSB's campus");
+
+    public void setUpWelcomePage() throws IOException{
+		guiRemoveAll();
+		welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+		tPanel.setSize(480,50);
+		mPanel.setSize(480,50);
+		nPanel.setSize(480,108);
+		bPanel.setSize(600,800);
+
+		title.setEditable(false);
+		text.setEditable(false);
+		Enter.addActionListener(new ENTERActionListener());
+		Enter.setPreferredSize(new Dimension(150,75));
+		Enter.setFont(new Font("Enter",0,40));
+		java.net.URL UCSBLOGO_URL = getClass().getResource("/ucsb-wave-logo.png");
+		JLabel LOGOlabel = new JLabel(new ImageIcon(UCSBLOGO_URL));
+
+
+		tPanel.add(title);
+		mPanel.add(text);
+		nPanel.add(LOGOlabel);
+		bPanel.add(Enter);
+		
+		welcomeFrame.setLayout(new BoxLayout(welcomeFrame.getContentPane(), BoxLayout.Y_AXIS));
+		welcomeFrame.add(tPanel);
+		welcomeFrame.add(mPanel);
+		welcomeFrame.add(nPanel);
+		welcomeFrame.add(bPanel);
+		welcomeFrame.setSize(480,320);
+		welcomeFrame.setBackground(Color.WHITE);
+		welcomeFrame.setResizable(false);		
+		welcomeFrame.setVisible(true);
+	}//end setUpWelcomePage
+
 
         //function to set up the homescreen
 	public void setUpHomeScreen() throws IOException{
@@ -160,47 +225,113 @@ public class TheGUI{
 	    ENGR2.addActionListener(new ENGR2Listener());
 	    LIBRARY.setPreferredSize(new Dimension(100,100));
 	    LIBRARY.addActionListener(new LIBRARYListener());
+	    EXIT.setPreferredSize(new Dimension(100,100));
+	    EXIT.addActionListener(new EXITListener());
+	    
+	    // POP UP INFORMATION WINDOWS
+	    	T387info.setPreferredSize(new Dimension(100,100));
+		T387info.addActionListener(new T387infoListener());
+		T429info.setPreferredSize(new Dimension(100,100));
+		T429info.addActionListener(new T429infoListener());
+		BRDAinfo.setPreferredSize(new Dimension(100,100));
+		BRDAinfo.addActionListener(new BRDAinfoListener());
+		BSIFinfo.setPreferredSize(new Dimension(100,100));
+		BSIFinfo.addActionListener(new BSIFinfoListener());
+		GIRVinfo.setPreferredSize(new Dimension(100,100));
+		GIRVinfo.addActionListener(new GIRVinfoListener());
+		HSSBinfo.setPreferredSize(new Dimension(100,100));
+		HSSBinfo.addActionListener(new HSSBinfoListener());
+		HFHinfo.setPreferredSize(new Dimension(100,100));
+		HFHinfo.addActionListener(new HFHinfoListener());
+		LLCHinfo.setPreferredSize(new Dimension(100,100));
+		LLCHinfo.addActionListener(new LLCHinfoListener());
+		PHELPinfo.setPreferredSize(new Dimension(100,100));
+		PHELPinfo.addActionListener(new PHELPinfoListener());
+		KERRinfo.setPreferredSize(new Dimension(100,100));
+		KERRinfo.addActionListener(new KERRinfoListener());
+	    NORTHinfo.setPreferredSize(new Dimension(100,100));
+	    NORTHinfo.addActionListener(new NORTHinfoListener());
+	    SOUTHinfo.setPreferredSize(new Dimension(100,100));
+	    SOUTHinfo.addActionListener(new SOUTHinfoListener());
+	    ENGRSCIinfo.setPreferredSize(new Dimension(100,100));
+	    ENGRSCIinfo.addActionListener(new ENGRSCIinfoListener());
+	    ENGR2info.setPreferredSize(new Dimension(100,100));
+	    ENGR2info.addActionListener(new ENGR2infoListener());
+
 	    suggestBox.setPreferredSize(new Dimension(20, 0));
 
 		//adding panels and setting dimensions
 		topPanel.add(searchLabel);
 		topPanel.add(searchBar);
 		leftPanel.add(T387);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(T387info);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+
 		leftPanel.add(T429);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(T429info);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		leftPanel.add(BRDA);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(BRDAinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		leftPanel.add(BSIF);
-		leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		leftPanel.add(BSIFinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		leftPanel.add(GIRV);
-	    leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    leftPanel.add(NORTH);
-	    leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    leftPanel.add(ENGRSCI);
-	    leftPanel.add(Box.createRigidArea(new Dimension(200,50)));
-	    leftPanel.add(LIBRARY);
+		leftPanel.add(GIRVinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		leftPanel.add(NORTH);
+		leftPanel.add(NORTHinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		leftPanel.add(ENGRSCI);
+		leftPanel.add(ENGRSCIinfo);
+		leftPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		leftPanel.add(LIBRARY);
+
 		rightPanel.add(HSSB);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(HSSBinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(HFH);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(HFHinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(KERR);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(KERRinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(LLCH);
-		rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(LLCHinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(PHELP);
-	    rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(PHELPinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
 		rightPanel.add(SOUTH);
-	    rightPanel.add(Box.createRigidArea(new Dimension(200,50)));
+		rightPanel.add(SOUTHinfo);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+
+		
 		rightPanel.add(ENGR2);
-	    rightPanel.add(Box.createRigidArea(new Dimension(200,75)));
+		rightPanel.add(ENGR2info);
+		rightPanel.add(Box.createRigidArea(new Dimension(50,25)));
+		
+		rightPanel.add(EXIT);
+		
 		thePanel.add(leftPanel);
 		thePanel.add(rightPanel);
 		searchBar.setLayout(new BorderLayout());
         searchBar.add(suggestBox, BorderLayout.SOUTH);
 		frame.getContentPane().add(BorderLayout.CENTER, thePanel);
 		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.setSize(420, 625);
+		frame.setSize(600, 800);
+		frame.setResizable(false);
 		frame.setBackground(Color.WHITE);
 		frame.setVisible(true);
 		searchBar.requestFocus(); //put cursor in search bar
@@ -275,451 +406,119 @@ public class TheGUI{
   
 
 	public void T387() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea T387TA = new JTextArea(MapStatics.T387Info);
-		T387TA.setEditable(false);
-		T387TA.setLineWrap(true);
-		T387TA.setWrapStyleWord(true);
-		JScrollPane T387Scroll = new JScrollPane(T387TA);
-		T387Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		T387TA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(T387Scroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(T387Label);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL T387_URL = getClass().getResource("/387.jpg");
-		JLabel T387label = new JLabel(new ImageIcon(T387_URL));
+		//guiRemoveAll();
+		//newPanel.setBackground(Color.WHITE);
+		//newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+		//newPanel.setSize(800,625);
+		//JTextArea T387TA = new JTextArea(MapStatics.T387Info);
+		//T387TA.setEditable(false);
+		//T387TA.setLineWrap(true);
+		//T387TA.setWrapStyleWord(true);
+		//JScrollPane T387Scroll = new JScrollPane(T387TA);
+		//T387Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//T387TA.setPreferredSize(new Dimension(200,600));
+		//infoPanel.add(T387Scroll);
+		//bottomPanel.add(cancel);
+		//newPanel.add(bottomPanel);
+		//topPanel.add(T387Label);
+		//cancel.addActionListener(new CancelActionListener());
+		//java.net.URL T387_URL = getClass().getResource("/387.jpg");
+		//JLabel T387label = new JLabel(new ImageIcon(T387_URL));
 
 		//String Path = "387.jpg";
 		//File File = new File(Path);
 		//BufferedImage Image = ImageIO.read(File);
 		//JLabel label = new JLabel(new ImageIcon(Image));
-		newPanel.add(T387label);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+
+		//newPanel.add(T387label);
+		//frame.getContentPane().add(BorderLayout.EAST, infoPanel);
+		//frame.getContentPane().add(BorderLayout.NORTH, topPanel);
+		//frame.getContentPane().add(BorderLayout.CENTER,newPanel);
+		//frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
+		//frame.setSize(1000,625);
+		//frame.setBackground(Color.WHITE);
+		//frame.setVisible(true);
+		setupbutton(MapStatics.T387Info, T387Label, "/387.jpg");
 	}//end T387
 
+	
 	public void T429() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea T429TA = new JTextArea(MapStatics.T429Info);
-		T429TA.setEditable(false);
-		T429TA.setLineWrap(true);
-		T429TA.setWrapStyleWord(true);
-		JScrollPane T429Scroll = new JScrollPane(T429TA);
-		T429Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		T429TA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(T429Scroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(T429Label);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL T429_URL = getClass().getResource("/429.jpg");
-		JLabel T429label = new JLabel(new ImageIcon(T429_URL));
+		setupbutton(MapStatics.T429Info, T429Label, "/429.jpg");
 
-		//String Path = "429.jpg";
-		//File File = new File(Path);
-		//BufferedImage Image = ImageIO.read(File);
-		//JLabel label = new JLabel(new ImageIcon(Image));
-		newPanel.add(T429label);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end T429
+	}
     
 	public void BRDA() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea BRDATA = new JTextArea(MapStatics.BRDAInfo);
-		BRDATA.setEditable(false);
-		BRDATA.setLineWrap(true);
-		BRDATA.setWrapStyleWord(true);
-		JScrollPane BRDAScroll = new JScrollPane(BRDATA);
-		BRDAScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		BRDATA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(BRDAScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(BRDALabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL BRDA_URL = getClass().getResource("/BRDA.jpg");
-		JLabel BRDAlabel = new JLabel(new ImageIcon(BRDA_URL));
-		//String BRDAPath = "BRDA.jpg";
-		//File BRDAFile = new File(BRDAPath);
-		//BufferedImage BRDAImage = ImageIO.read(BRDAFile);
-		//JLabel BRDAlabel = new JLabel(new ImageIcon(BRDAImage));
-		newPanel.add(BRDAlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end BRDA
+		setupbutton(MapStatics.BRDAInfo, BRDALabel, "/BRDA.jpg");
+	}
        
 	public void BSIF() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea BSIFTA = new JTextArea(MapStatics.BSIFInfo);
-		BSIFTA.setEditable(false);
-		BSIFTA.setLineWrap(true);
-		BSIFTA.setWrapStyleWord(true);
-		JScrollPane BSIFScroll = new JScrollPane(BSIFTA);
-		BSIFScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		BSIFTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(BSIFScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(BSIFLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL BSIF_URL = getClass().getResource("/BSIF.jpg");
-		JLabel BSIFlabel = new JLabel(new ImageIcon(BSIF_URL));
-		//String BSIFPath = "BSIF.jpg";
-		//File BSIFFile = new File(BSIFPath);
-		//BufferedImage BSIFImage = ImageIO.read(BSIFFile);
-		//JLabel BSIFlabel = new JLabel(new ImageIcon(BSIFImage));
-		newPanel.add(BSIFlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end BSIF
+		setupbutton(MapStatics.BSIFInfo, BSIFLabel, "/BSIF.jpg");
+	}
        
 	public void GIRV() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea GIRVTA = new JTextArea(MapStatics.GIRVInfo);
-		GIRVTA.setEditable(false);
-		GIRVTA.setLineWrap(true);
-		GIRVTA.setWrapStyleWord(true);
-		JScrollPane GIRVScroll = new JScrollPane(GIRVTA);
-		GIRVScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		GIRVTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(GIRVScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(GIRVLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL GIRV_URL = getClass().getResource("/GIRV.jpg");
-		JLabel GIRVlabel = new JLabel(new ImageIcon(GIRV_URL));
-		//String GIRVPath = "GIRV.jpg";
-		//File GIRVFile = new File(GIRVPath);
-		//BufferedImage GIRVImage = ImageIO.read(GIRVFile);
-		//JLabel GIRVlabel = new JLabel(new ImageIcon(GIRVImage));
-		newPanel.add(GIRVlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end GIRV
+		setupbutton(MapStatics.GIRVInfo, GIRVLabel, "/GIRV.jpg");
+	}
        
 	public void HFH() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea HFHTA = new JTextArea(MapStatics.HFHInfo);
-		HFHTA.setEditable(false);
-		HFHTA.setLineWrap(true);
-		HFHTA.setWrapStyleWord(true);
-		JScrollPane HFHScroll = new JScrollPane(HFHTA);
-		HFHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		HFHTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(HFHScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(HFHLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL HFH_URL = getClass().getResource("/HFH.jpg");
-		JLabel HFHlabel = new JLabel(new ImageIcon(HFH_URL));
-
-		//String HFHPath = "HFH.jpg";
-		//File HFHFile = new File(HFHPath);
-		//BufferedImage HFHImage = ImageIO.read(HFHFile);
-		//JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
-		newPanel.add(HFHlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end HFH
+		setupbutton(MapStatics.HFHInfo, HFHLabel, "/HFH.jpg");
+	}
         
 	public void HSSB() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea HSSBTA = new JTextArea(MapStatics.HSSBInfo);
-		HSSBTA.setEditable(false);
-		HSSBTA.setLineWrap(true);
-		HSSBTA.setWrapStyleWord(true);
-		JScrollPane HSSBScroll = new JScrollPane(HSSBTA);
-		HSSBScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		HSSBTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(HSSBScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(HSSBLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL HSSB_URL = getClass().getResource("/HSSB.jpg");
-		JLabel HSSBlabel = new JLabel(new ImageIcon(HSSB_URL));
-
-		//String HFHPath = "HSSB.jpg";
-		//File HFHFile = new File(HFHPath);
-		//BufferedImage HFHImage = ImageIO.read(HFHFile);
-		//JLabel HFHlabel = new JLabel(new ImageIcon(HFHImage));
-		newPanel.add(HSSBlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end HSSB
+		setupbutton(MapStatics.HSSBInfo, HSSBLabel, "/HSSB.jpg");
+	}
     
 	public void KERR() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea KERRTA = new JTextArea(MapStatics.KERRInfo);
-		KERRTA.setEditable(false);
-		KERRTA.setLineWrap(true);
-		KERRTA.setWrapStyleWord(true);
-		JScrollPane KERRScroll = new JScrollPane(KERRTA);
-		KERRScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		KERRTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(KERRScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(KERRLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL KERR_URL = getClass().getResource("/KERR.jpg");
-		JLabel KERRlabel = new JLabel(new ImageIcon(KERR_URL));
-
-		//String KERRPath = "KERR.jpg";
-		//File KERRFile = new File(KERRPath);
-		//BufferedImage KERRImage = ImageIO.read(KERRFile);
-		//JLabel KERRlabel = new JLabel(new ImageIcon(KERRImage));
-		newPanel.add(KERRlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end KERR
+		setupbutton(MapStatics.KERRInfo, KERRLabel, "/KERR.jpg");
+	}
     
 	public void LLCH() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea LLCHTA = new JTextArea(MapStatics.LLCHInfo);
-		LLCHTA.setEditable(false);
-		LLCHTA.setLineWrap(true);
-		LLCHTA.setWrapStyleWord(true);
-		JScrollPane LLCHScroll = new JScrollPane(LLCHTA);
-		LLCHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		LLCHTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(LLCHScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(LLCHLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL LLCH_URL = getClass().getResource("/LLCH.jpg");
-		//String LLCHPath = "LLCH.jpg";
-		//File LLCHFile = new File(LLCHPath);
-		//BufferedImage LLCHImage = ImageIO.read(LLCHFile);
-		JLabel LLCHlabel = new JLabel(new ImageIcon(LLCH_URL));
-		newPanel.add(LLCHlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end LLCH
+		setupbutton(MapStatics.LLCHInfo, LLCHLabel, "/LLCH.jpg");
+	}
        
 	public void PHELP() throws IOException{
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea PHELPTA = new JTextArea(MapStatics.PHELPInfo);
-		PHELPTA.setEditable(false);
-		PHELPTA.setLineWrap(true);
-		PHELPTA.setWrapStyleWord(true);
-		JScrollPane PHELPScroll = new JScrollPane(PHELPTA);
-		PHELPScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		PHELPTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(PHELPScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(PHELPLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL PHELP_URL = getClass().getResource("/PHELP.jpg");
-		JLabel PHELPlabel = new JLabel(new ImageIcon(PHELP_URL));
-
-		//String PHELPPath = "PHELP.jpg";
-		//File PHELPFile = new File(PHELPPath);
-		//BufferedImage PHELPImage = ImageIO.read(PHELPFile);
-		//JLabel PHELPlabel = new JLabel(new ImageIcon(PHELPImage));
-		newPanel.add(PHELPlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
-	}//end PHELP
+		setupbutton(MapStatics.PHELPInfo, PHELPLabel, "/PHELP.jpg");
+	}
     
 	public void NORTH() throws IOException {
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea NORTHTA = new JTextArea(MapStatics.NORTHInfo);
-		NORTHTA.setEditable(false);
-		NORTHTA.setLineWrap(true);
-		NORTHTA.setWrapStyleWord(true);
-		JScrollPane NORTHScroll = new JScrollPane(NORTHTA);
-		NORTHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		NORTHTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(NORTHScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(NORTHLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL NORTH_URL = getClass().getResource("/NORTH.jpg");
-		JLabel NORTHlabel = new JLabel(new ImageIcon(NORTH_URL));
-		
-		newPanel.add(NORTHlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		setupbutton(MapStatics.NORTHInfo, NORTHLabel, "/NORTH.jpg");
 	}
 	
 	public void SOUTH() throws IOException {
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea SOUTHTA = new JTextArea(MapStatics.SOUTHInfo);
-		SOUTHTA.setEditable(false);
-		SOUTHTA.setLineWrap(true);
-		SOUTHTA.setWrapStyleWord(true);
-		JScrollPane SOUTHScroll = new JScrollPane(SOUTHTA);
-		SOUTHScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		SOUTHTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(SOUTHScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(SOUTHLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL SOUTH_URL = getClass().getResource("/SOUTH.jpg");
-		JLabel SOUTHlabel = new JLabel(new ImageIcon(SOUTH_URL));
-		
-		newPanel.add(SOUTHlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		setupbutton(MapStatics.SOUTHInfo, SOUTHLabel, "/SOUTH.jpg");
 	}
 	
 	public void ENGRSCI() throws IOException {
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea ENGRSCITA = new JTextArea(MapStatics.ENGRSCIInfo);
-		ENGRSCITA.setEditable(false);
-		ENGRSCITA.setLineWrap(true);
-		ENGRSCITA.setWrapStyleWord(true);
-		JScrollPane ENGRSCIScroll = new JScrollPane(ENGRSCITA);
-		ENGRSCIScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		ENGRSCITA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(ENGRSCIScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(ENGRSCILabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL ENGRSCI_URL = getClass().getResource("/ENGRSCI.jpg");
-		JLabel ENGRSCIlabel = new JLabel(new ImageIcon(ENGRSCI_URL));
-		
-		newPanel.add(ENGRSCIlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+		setupbutton(MapStatics.ENGRSCIInfo, ENGRSCILabel, "/ENGRSCI.jpg");
 	}
 	
 	public void ENGR2() throws IOException {
+		setupbutton(MapStatics.ENGR2Info, ENGR2Label, "/ENGR2.jpg");
+	}
+	
+	public void LIBRARY() throws IOException {
+		setupbutton(MapStatics.LIBRARYInfo, LIBRARYLabel, "/LIBRARY.jpg");
+	}
+
+	public void setupbutton(String info, JLabel Label, String pics){
 		guiRemoveAll();
 		newPanel.setBackground(Color.WHITE);
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.setSize(800,625);
-		JTextArea ENGR2TA = new JTextArea(MapStatics.ENGR2Info);
-		ENGR2TA.setEditable(false);
-		ENGR2TA.setLineWrap(true);
-		ENGR2TA.setWrapStyleWord(true);
-		JScrollPane ENGR2Scroll = new JScrollPane(ENGR2TA);
-		ENGR2Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		ENGR2TA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(ENGR2Scroll);
+		JTextArea TA=new JTextArea(info);
+		TA.setEditable(false);
+		TA.setLineWrap(true);
+		TA.setWrapStyleWord(true);
+		JScrollPane Scroll = new JScrollPane(TA);
+		Scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		TA.setPreferredSize(new Dimension(200,600));
+		infoPanel.add(Scroll);
 		bottomPanel.add(cancel);
 		newPanel.add(bottomPanel);
-		topPanel.add(ENGR2Label);
+		topPanel.add(Label);
 		cancel.addActionListener(new CancelActionListener());
-		java.net.URL ENGR2_URL = getClass().getResource("/ENGR2.jpg");
-		JLabel ENGR2label = new JLabel(new ImageIcon(ENGR2_URL));
-		
-		newPanel.add(ENGR2label);
+		java.net.URL URL = getClass().getResource(pics);
+		JLabel label = new JLabel(new ImageIcon(URL));
+		newPanel.add(label);
 		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
 		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
 		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
@@ -728,35 +527,9 @@ public class TheGUI{
 		frame.setBackground(Color.WHITE);
 		frame.setVisible(true);
 	}
-	
-	public void LIBRARY() throws IOException {
-		guiRemoveAll();
-		newPanel.setBackground(Color.WHITE);
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
-		newPanel.setSize(800,625);
-		JTextArea LIBRARYTA = new JTextArea(MapStatics.LIBRARYInfo);
-		LIBRARYTA.setEditable(false);
-		LIBRARYTA.setLineWrap(true);
-		LIBRARYTA.setWrapStyleWord(true);
-		JScrollPane LIBRARYScroll = new JScrollPane(LIBRARYTA);
-		LIBRARYScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		LIBRARYTA.setPreferredSize(new Dimension(200,600));
-		infoPanel.add(LIBRARYScroll);
-		bottomPanel.add(cancel);
-		newPanel.add(bottomPanel);
-		topPanel.add(LIBRARYLabel);
-		cancel.addActionListener(new CancelActionListener());
-		java.net.URL LIBRARY_URL = getClass().getResource("/LIBRARY.jpg");
-		JLabel LIBRARYlabel = new JLabel(new ImageIcon(LIBRARY_URL));
-		
-		newPanel.add(LIBRARYlabel);
-		frame.getContentPane().add(BorderLayout.EAST, infoPanel);
-		frame.getContentPane().add(BorderLayout.NORTH, topPanel);
-		frame.getContentPane().add(BorderLayout.CENTER,newPanel);
-		frame.getContentPane().add(BorderLayout.SOUTH, bottomPanel);
-		frame.setSize(1000,625);
-		frame.setBackground(Color.WHITE);
-		frame.setVisible(true);
+
+    	public void EXIT() throws IOException {
+	    System.exit(0);
 	}
 	
 	
@@ -959,7 +732,107 @@ public class TheGUI{
 					}
 		}
 	}//end LIBRARYListener
-	
+
+    class EXITListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+		    try{EXIT();}
+		        catch (IOException ex){
+			        Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
+			        }
+		}
+	}//end EXITListener
+
+	class ENTERActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			try {welcomeFrame.dispose();setUpHomeScreen();}
+			    catch (IOException ex) {
+				    Logger.getLogger(TheGUI.class.getName()).log(Level.SEVERE, null, ex);
+				    }
+		}
+	}//end ENTERActionListener
+
+
+    // Listeners for info buttin
+    class T387infoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	    JOptionPane.showMessageDialog(new JFrame(), "Trailer office near Psychology building");
+	}
+    }
+    class T429infoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Trailer office near Psychology building");
+	}
+    }
+    class BRDAinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Physics");
+	}
+    }
+    class BSIFinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Biology Science");
+	}
+    }
+    class GIRVinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	    	JOptionPane.showMessageDialog(new JFrame(), "Classrooms of Sections");
+	}
+    }
+    class HSSBinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Human and Social Science");
+	}
+    }
+    class HFHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	  	JOptionPane.showMessageDialog(new JFrame(), "Department of Computer Science and Electrical Engineerings");
+	}
+    }
+    class KERRinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Digital and Media");
+	}
+    }
+    class LLCHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Music");
+	}
+    }
+    class PHELPinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Building of Computer Science labs");
+	}
+    }
+    class NORTHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	   	JOptionPane.showMessageDialog(new JFrame(), "Department of Economics");
+	}
+    }
+    class SOUTHinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+	  	JOptionPane.showMessageDialog(new JFrame(), "Department of Mathmatics and Writing");
+	}
+    }
+    class CAMPBELLinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+		JOptionPane.showMessageDialog(new JFrame(), "The Hall for specail events");
+	}
+    }
+    class ENGRSCIinfoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+		JOptionPane.showMessageDialog(new JFrame(), "Department of Engineering Science");
+
+	}
+    }
+    class ENGR2infoListener implements ActionListener {
+	public void actionPerformed(ActionEvent event) {
+		JOptionPane.showMessageDialog(new JFrame(), "Department of Engineering");
+	   
+	}
+    }
+  
     
+	   
+	   
 } //end class
 

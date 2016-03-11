@@ -11,6 +11,11 @@ Map GUI for navigating around UCSB's campus
 
 project history
 ===============
+
+W16 Final Remarks
+We added information buttons under every buildings. We added a welcome page. We adjust the buttons in the main page and made the window size static. We added a command line version of this interactive map. we dealed with some duplicated code and put actionlistener codes in a helper function. the bug is in the command line version when you press cancel.You can rearrange the place of the buttons.
+
+===============
 ```
  N/A
 ```

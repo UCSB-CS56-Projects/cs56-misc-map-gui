@@ -15,6 +15,8 @@
   <property name="quarter" value="S13" />
   <property name="issueNum" value="0000707" />
   <property name="mainClass" value="edu.ucsb.cs56.projects.misc.map_gui.Run" />
+  <property name="commandLine" value="edu.ucsb.cs56.projects.misc.map_gui.CommandLineVersion" />
+
 
   
   <property name="projectName" value="${course}_${quarter}_${issueNum}" />
@@ -48,10 +50,17 @@
     </java>
   </target>
 
+  <target name="runOnTerminal" depends="compile,jar" description="run the code on terminal">
+    <java classname="${commandLine}" classpath="dist/${projectName}.jar" 
+      fork="true" > 
+    </java>
+  </target>
+
   <target name="clean" description="clean up unnecessary directory">
     <delete failonerror="false" verbose="true">
       <fileset dir="build" includes="*.class"/>
     </delete>
+    <delete dir="build/edu/ucsb/cs56/projects/misc/map_gui" quiet="true"/>
     <delete dir="javadoc" quiet="true" />
     <delete dir="dist" quiet="true" />
     <!--
